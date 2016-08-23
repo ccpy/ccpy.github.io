@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2014/03/11/androidActionBarmenu菜单无法显示的问题/index.html">
 <meta property="og:site_name" content="bogou">
 <meta property="og:description" content="ActionBar的overflow menu无法溢出的问题">
-<meta property="og:updated_time" content="2016-08-23T10:25:57.516Z">
+<meta property="og:updated_time" content="2016-08-23T10:47:55.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android开发之actionbar无法显示overflow menu的解决办法">
 <meta name="twitter:description" content="ActionBar的overflow menu无法溢出的问题">
@@ -76,8 +76,7 @@
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###android开发之actionbar无法显示overflow menu的解决办法</p>
-<p>今天在开发actionbar的时候，遇到一个奇葩的问题~，就是按照官方的文档创建actionbar的时候。在设置溢出菜单选项的时候，不管我上面有多少菜单项，都无法溢出，最多就是显示出来几个，在网上找了好久，也没有找到好的办法，后来在群里询问，有的人说是因为我设置的showAsAction属性有错误，我设置的是ifRoom|withText，然而我按照他说的改成了never，也是不行。最后不得不去认真的看官方文档，官方文档解释是这样的：</p>
+        <h3 id="android开发之actionbar无法显示overflow-menu的解决办法"><a href="#android开发之actionbar无法显示overflow-menu的解决办法" class="headerlink" title="android开发之actionbar无法显示overflow menu的解决办法"></a>android开发之actionbar无法显示overflow menu的解决办法</h3><p>今天在开发actionbar的时候，遇到一个奇葩的问题~，就是按照官方的文档创建actionbar的时候。在设置溢出菜单选项的时候，不管我上面有多少菜单项，都无法溢出，最多就是显示出来几个，在网上找了好久，也没有找到好的办法，后来在群里询问，有的人说是因为我设置的showAsAction属性有错误，我设置的是ifRoom|withText，然而我按照他说的改成了never，也是不行。最后不得不去认真的看官方文档，官方文档解释是这样的：</p>
 <blockquote>
 <p>The action overflow in the action bar provides access to your app’s less frequently used actions. The overflow icon only appears on phones that have no menu hardware keys. Phones with menu keys display the action overflow when the user presses the key.<a href="http://developer.android.com/design/patterns/actionbar.html#considerations-split-action-bars" target="_blank" rel="external">点击链接</a></p>
 <p>大概意思就是：溢出菜单里面存放些不常用的功能选项，溢出菜单图标只出现在手机硬件没有菜单键的设备上，当用户按下溢出菜单后，溢出菜单会显示出存放的功能选项。</p>
@@ -100,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/03/11/androidActionBarmenu菜单无法显示的问题/" data-id="cis7caswr000ap7jxyr5o1v4t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/03/11/androidActionBarmenu菜单无法显示的问题/" data-id="cis7cnqyd000amhjxj08b5vag" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ActionBar/">ActionBar</a></li></ul>

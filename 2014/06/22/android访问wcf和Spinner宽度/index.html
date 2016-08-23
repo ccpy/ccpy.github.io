@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2014/06/22/android访问wcf和Spinner宽度/index.html">
 <meta property="og:site_name" content="bogou">
 <meta property="og:description" content="android 访问wcf服务，以及Spinner设置宽度。">
-<meta property="og:updated_time" content="2016-08-23T10:25:49.176Z">
+<meta property="og:updated_time" content="2016-08-23T10:47:27.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android访问wcf服务、Spinner设置宽度">
 <meta name="twitter:description" content="android 访问wcf服务，以及Spinner设置宽度。">
@@ -76,8 +76,7 @@
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###Android访问wcf服务时候遇到的问题</p>
-<blockquote>
+        <h3 id="Android访问wcf服务时候遇到的问题"><a href="#Android访问wcf服务时候遇到的问题" class="headerlink" title="Android访问wcf服务时候遇到的问题"></a>Android访问wcf服务时候遇到的问题</h3><blockquote>
 <p>由于公司后台服务器，用的是wcf，在android中访问wcf是跟其他访问webservice是有出入的。访问webservice时，数据传输是用json，或者是xml。当然在wcf原理也是这样的。android反问wcf用的一个第三方的包ksoap2来访问的。当然你也可以自己去实现访问客户端，进行数据交互，但是实现起来无非就是自己实现了一遍ksoap2。我就不再重复制造轮子了..有兴趣的可以自己实现一下，我在这里就是记录一下ksoap2的用法：</p>
 </blockquote>
 <pre><code>public boolean login(User u) {
@@ -117,8 +116,7 @@
 <li><p>SoapPrimitive 跟SoapObject对象很相似，简单理解为：在返回多个对象是一个集合的时候用SoapObject,在返回对象是单一个对象的时候，用SaopPrimitive </p>
 </li>
 </ul>
-<p>###AndroidSpinner控件设置Width</p>
-<blockquote>
+<h3 id="AndroidSpinner控件设置Width"><a href="#AndroidSpinner控件设置Width" class="headerlink" title="AndroidSpinner控件设置Width"></a>AndroidSpinner控件设置Width</h3><blockquote>
 <p>android Spinner自适应宽度，Spinner默认的弹出来一个窗口，fill_width宽度的窗口，当你数据很少的时候用户体验会很差，在网上看了一些朋友的说法就是设置spinner所用的adapter中填充的布局的宽度，但是这样的方法是实现不了spinner下拉菜单变窄的，于是我就看了下Spinner源码。在Spinner类中有这样的片段。</p>
 </blockquote>
 <pre><code>// Only measure this many items to get a decent max width.
@@ -170,7 +168,7 @@ public void setDropDownWidth(int pixels) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/22/android访问wcf和Spinner宽度/" data-id="cis7caswy000hp7jxbnqdjzdj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/22/android访问wcf和Spinner宽度/" data-id="cis7cnqyj000hmhjx6wjcre2u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android、wcf、webService/">android、wcf、webService</a></li></ul>

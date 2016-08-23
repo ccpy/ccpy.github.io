@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="bogou">
 <meta property="og:description" content="安装mysqldb时候遇到的一些问题">
 <meta property="og:image" content="http://ccpy.qiniudn.com/test.jpg">
-<meta property="og:updated_time" content="2016-08-23T10:26:36.904Z">
+<meta property="og:updated_time" content="2016-08-23T10:46:49.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows下安装python mysqldb">
 <meta name="twitter:description" content="安装mysqldb时候遇到的一些问题">
@@ -78,35 +78,29 @@
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##在windows下安装python mysqldb</p>
-<p>在windows下安装mysqldb，直接选择相应的版本，双击进行安装即可。<a href="http://www.codegood.com/downloads" target="_blank" rel="external">点击下载</a></p>
-<p>####python包管理整理</p>
-<p>在python开发中经常用到的一个工具，pip，在网上搜这方面的知识，会有一大堆。在此不在累赘。在*unix下安装python的pip会很容易安装，在windows下，就要用到一个脚本去安装。<a href="https://bootstrap.pypa.io/ez_setup.py" target="_blank" rel="external">点击下载</a>,这个是安装easy_install 的。然后可以用easy_install去安装pip工具</p>
-<p>####python的虚拟环境</p>
-<p>python开发的时候，经常会有N多的三方库，这就造成了python环境的混乱，和臃肿。所以，在这里我们用virtualenv去创建项目的工作的python环境。用Virtualenvwrapper去管理python的虚拟环境</p>
+        <h2 id="在windows下安装python-mysqldb"><a href="#在windows下安装python-mysqldb" class="headerlink" title="在windows下安装python mysqldb"></a>在windows下安装python mysqldb</h2><p>在windows下安装mysqldb，直接选择相应的版本，双击进行安装即可。<a href="http://www.codegood.com/downloads" target="_blank" rel="external">点击下载</a></p>
+<h4 id="python包管理整理"><a href="#python包管理整理" class="headerlink" title="python包管理整理"></a>python包管理整理</h4><p>在python开发中经常用到的一个工具，pip，在网上搜这方面的知识，会有一大堆。在此不在累赘。在*unix下安装python的pip会很容易安装，在windows下，就要用到一个脚本去安装。<a href="https://bootstrap.pypa.io/ez_setup.py" target="_blank" rel="external">点击下载</a>,这个是安装easy_install 的。然后可以用easy_install去安装pip工具</p>
+<h4 id="python的虚拟环境"><a href="#python的虚拟环境" class="headerlink" title="python的虚拟环境"></a>python的虚拟环境</h4><p>python开发的时候，经常会有N多的三方库，这就造成了python环境的混乱，和臃肿。所以，在这里我们用virtualenv去创建项目的工作的python环境。用Virtualenvwrapper去管理python的虚拟环境</p>
 <p>1.创建一个虚拟环境</p>
 <pre><code>virtualenv env1 
 </code></pre><p>2.然后进到虚拟环境中去用pip安装所需的三方库，</p>
 <pre><code>pip install [第三方库]
 </code></pre><p>3.所有的虚拟环境，互不干扰</p>
-<p>####python的requirements</p>
-<p>1.生成requirements.txt文件</p>
+<h4 id="python的requirements"><a href="#python的requirements" class="headerlink" title="python的requirements"></a>python的requirements</h4><p>1.生成requirements.txt文件</p>
 <pre><code>pip freeze &gt; requirements.txt
 </code></pre><p>2.用requirements.txt文件下载项目所依赖的三方库</p>
 <pre><code>pip install -r requirements.txt
-</code></pre><p>####python + pychram + django快速开发方案</p>
-<p>配置django设置。</p>
+</code></pre><h4 id="python-pychram-django快速开发方案"><a href="#python-pychram-django快速开发方案" class="headerlink" title="python + pychram + django快速开发方案"></a>python + pychram + django快速开发方案</h4><p>配置django设置。</p>
 <p>1.files-&gt; setting -&gt; django support </p>
 <p>2.然后选择项目目录。再选择setting文件，最后选择manage.py文件。</p>
 <p>3.Ctrl + Alt + R 选择要执行的manage.py的命令</p>
-<p>####python+django练习</p>
-<p>这是我在学习python的时候，做的一个博客。已经支持代码高亮，前端界面用的是一些css库。整个的blog的内容很简洁，支持markdown编辑文件，后台管理直接用的三方库，来支持markdon输入，评论系统用的国内的多说网，在这里感谢多少网的支持，由于本人前段技术有限，所以，以后会逐渐的加入新功能，譬如：文章分类，文章标签等功能。</p>
+<h4 id="python-django练习"><a href="#python-django练习" class="headerlink" title="python+django练习"></a>python+django练习</h4><p>这是我在学习python的时候，做的一个博客。已经支持代码高亮，前端界面用的是一些css库。整个的blog的内容很简洁，支持markdown编辑文件，后台管理直接用的三方库，来支持markdon输入，评论系统用的国内的多说网，在这里感谢多少网的支持，由于本人前段技术有限，所以，以后会逐渐的加入新功能，譬如：文章分类，文章标签等功能。</p>
 <p><img src="http://ccpy.qiniudn.com/test.jpg" alt="图片"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2013/11/22/安装pythonmysqldb遇到的问题/" data-id="cis7casx70013p7jx4hkhxtq7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2013/11/22/安装pythonmysqldb遇到的问题/" data-id="cis7cnqyu0014mhjxmccm4o5d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

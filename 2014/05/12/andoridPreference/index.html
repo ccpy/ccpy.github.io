@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2014/05/12/andoridPreference/index.html">
 <meta property="og:site_name" content="bogou">
 <meta property="og:description" content="andorid设置界面的框架">
-<meta property="og:updated_time" content="2016-08-23T10:25:44.580Z">
+<meta property="og:updated_time" content="2016-08-23T10:47:16.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="andorid设置界面的框架，Preference Screens用法。">
 <meta name="twitter:description" content="andorid设置界面的框架">
@@ -76,9 +76,7 @@
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###andorid Preference Screens的用法，及注意事项。</p>
-<p>#####PreferenceScreen首选项的资源定义：</p>
-<pre><code>在项目res/xml文件夹下创建。
+        <h3 id="andorid-Preference-Screens的用法，及注意事项。"><a href="#andorid-Preference-Screens的用法，及注意事项。" class="headerlink" title="andorid Preference Screens的用法，及注意事项。"></a>andorid Preference Screens的用法，及注意事项。</h3><h5 id="PreferenceScreen首选项的资源定义："><a href="#PreferenceScreen首选项的资源定义：" class="headerlink" title="PreferenceScreen首选项的资源定义："></a>PreferenceScreen首选项的资源定义：</h5><pre><code>在项目res/xml文件夹下创建。
 
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;PreferenceScreen xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
@@ -90,8 +88,7 @@
 &lt;/PreferenceScreen&gt;
 </code></pre><blockquote>
 <p>在定义设置界面的组件的时候，有几个属性是应该指定的。title、key、summary、defaultValue.从字面上，也可以看出，这是指定组件的什么属性的，不再累赘。而控件的类别，也是分很多种：CheckBoxPreference、EditTextPreference、ListPreference、MultiScreenListPreference、RingtonePreference。哎呀这些官网上都有。罗嗦了。。</p>
-<p>#####PreferenceHeader资源定义</p>
-<p>PreferenceHeader资源是对Preference Fragment在Preference Activity中是怎样分组显示的。简单的理解为是对设置选项的分类而已。但是，Preference Header对不同屏幕做了适应。在平板和小屏的设备上显示的是不同的。</p>
+<h5 id="PreferenceHeader资源定义"><a href="#PreferenceHeader资源定义" class="headerlink" title="PreferenceHeader资源定义"></a>PreferenceHeader资源定义</h5><p>PreferenceHeader资源是对Preference Fragment在Preference Activity中是怎样分组显示的。简单的理解为是对设置选项的分类而已。但是，Preference Header对不同屏幕做了适应。在平板和小屏的设备上显示的是不同的。</p>
 </blockquote>
 <pre><code>&lt;preference-headers xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
     &lt;header android:fragment=&quot;com.cpy.newwork.MyPreference&quot;
@@ -101,8 +98,7 @@
         &gt;
     &lt;/header&gt;
 &lt;/preference-headers&gt;
-</code></pre><p>###Preference Activity 和Preference Fragment</p>
-<blockquote>
+</code></pre><h3 id="Preference-Activity-和Preference-Fragment"><a href="#Preference-Activity-和Preference-Fragment" class="headerlink" title="Preference Activity 和Preference Fragment"></a>Preference Activity 和Preference Fragment</h3><blockquote>
 <p>在android(3.0)，API=11时，首选项框架做了很大的修改，增加了Preference Fragment 和 Preference Header的概念，现在这是创建首选项的首选技术。而今天主要是介绍Preference Fragment的应用，和如何兼容3.0以前的android版本。在3.0以前的版本中，主要是用Preference Activity来对设置界面的加载。而3.0的诞生，主要是针对平板、或者大屏做了很多的设计。且Fragment就是其中之一了。所以Preference Fragment的诞生也是理所当然的。在3.0加载设置界面xml文件的时候，直接是其继承PreferenceFragment，重写onCreate的方法，并调用addPreferencesFromResource(R.xml.preferencescreen)方法。</p>
 </blockquote>
 <pre><code>public class MyPreference extends PreferenceFragment {
@@ -151,7 +147,7 @@ SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferen
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/12/andoridPreference/" data-id="cis7caswq0007p7jxku0b8ul4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/12/andoridPreference/" data-id="cis7cnqyb0007mhjx7rv3k8qq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -162,11 +158,11 @@ SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferen
     
 <nav id="article-nav">
   
-    <a href="/2014/05/20/android_listview图片异步加载，和图片错乱/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/05/12/android简洁架构/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          解决Android ListView图片异步加载，和图片错乱
+          Android简洁架构
         
       </div>
     </a>

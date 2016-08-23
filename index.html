@@ -51,50 +51,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-android简洁架构" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-      <header class="article-header">
-        
-  
-    <a class="article-title" href="/2016/08/23/android简洁架构/">Android简洁架构</a>
-  
-
-      </header>
-    
-    <time class="article-date" datetime="2016-08-23T10:39:24.052Z" itemprop="datePublished">08-23-2016</time>
-    
-  </div>
-  <div class="article-inner">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Android简洁架构</p>
-<p>###Android原生的开发</p>
-<blockquote>
-<p>都说Android在开发中，采用了MVC模式，但是在开发过程中，能感觉到整个Activity兼职于界面层，控制层。且Activity和界面层耦合度相当高，如果界面的空间要更改，整个Activity的实现要跟随着View层的改动而改动，这样的开发架构，实在是不够灵活，扩展性差，如果需求一改动基本上要不原来的实现再重新实现一遍，在开发过程中我感觉到Activity担任的职责太多，代码逻辑往往不是很清晰，于是就想找其他一种模式来代替Android原生的开发模式，能把Activity从混乱的结构中解脱出来。</p>
-</blockquote>
-<p>###MVP模式</p>
-<blockquote>
-<p>在github上国外的大神在架构上提出了MVP开发架构，类似于MVC开发模式，这里的字母分别指代为：M -&gt; Model,V -&gt; View, P -&gt; Presenter。这样的开发模式，可以把Activity从复杂的Control中截图出来，把所有的业务逻辑的控制，都在Presenter中处理，而Activity只是一个Presenter的持有者，在activity中初始化，且在Presenter中完成空间的监听事件，以及界面内容的渲染。Presenter中提供了所有的业务请求代码的入口。</p>
-</blockquote>
-<p>###MVP的进阶MVVM模式</p>
-<blockquote>
-<p>MVVM在微软的技术WPF中得到了广泛的应用，字母分别值：M-Model,V-View,VM-ViewModel。MVVM是由MVP演化过来的。模式很相似，你有一个View控件，分别要有一个对应的ViewModel，来绑定View上的所有控件。在WPF中支持双向绑定，和单向绑定。View的显示跟随ViewModel的绑定的值改变而改变。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/23/android简洁架构/" data-id="cis7caswu000cp7jx665kjvii" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
@@ -125,7 +81,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/23/hello-world/" data-id="cis7casx0000mp7jxq7w5hzoy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/23/hello-world/" data-id="cis7cnqyl000mmhjxlv2lowfc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -156,18 +112,13 @@
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##Swift编程语言学习</p>
-<h4 id="xcode6-1一个好玩的东西playGround"><a href="#xcode6-1一个好玩的东西playGround" class="headerlink" title="xcode6.1一个好玩的东西playGround"></a>xcode6.1一个好玩的东西playGround</h4><p>为什么说它好玩呢，因为他可以把swift在没有编译的情况下，显示出每行代码的结果，其实就是预览功能了。强大无比。</p>
-<p>####hello word</p>
-<pre><code>print(&quot;hello word&quot;)
-</code></pre><p>####变量</p>
-<pre><code>var address = &quot;北京&quot;
-</code></pre><p>####常量定义</p>
-<pre><code>let name = &quot;Jim&quot;
+        <h2 id="Swift编程语言学习"><a href="#Swift编程语言学习" class="headerlink" title="Swift编程语言学习"></a>Swift编程语言学习</h2><h4 id="xcode6-1一个好玩的东西playGround"><a href="#xcode6-1一个好玩的东西playGround" class="headerlink" title="xcode6.1一个好玩的东西playGround"></a>xcode6.1一个好玩的东西playGround</h4><p>为什么说它好玩呢，因为他可以把swift在没有编译的情况下，显示出每行代码的结果，其实就是预览功能了。强大无比。</p>
+<h4 id="hello-word"><a href="#hello-word" class="headerlink" title="hello word"></a>hello word</h4><pre><code>print(&quot;hello word&quot;)
+</code></pre><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><pre><code>var address = &quot;北京&quot;
+</code></pre><h4 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h4><pre><code>let name = &quot;Jim&quot;
 
 let age = 18
-</code></pre><p>####强制类型转换，</p>
-<pre><code>let nameAndAge = name + &quot;:&quot; + String(age)
+</code></pre><h4 id="强制类型转换，"><a href="#强制类型转换，" class="headerlink" title="强制类型转换，"></a>强制类型转换，</h4><pre><code>let nameAndAge = name + &quot;:&quot; + String(age)
 
 
 let apples = 18
@@ -177,12 +128,10 @@ let oranges = 20
 <pre><code>let applesSummary = &quot;i hava \(apples) apples&quot;
 
 let orangesSummary = &quot;i have \(oranges) oranges&quot;
-</code></pre><p>####创建数组</p>
-<pre><code>var names = [1,2,3,4,5]
+</code></pre><h4 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h4><pre><code>var names = [1,2,3,4,5]
 
 names[1]
-</code></pre><p>####创建字典</p>
-<pre><code>var tabales = [
+</code></pre><h4 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h4><pre><code>var tabales = [
     //scale
     &quot;name&quot; : &quot;夏明&quot;,
     &quot;age&quot; : &quot;15&quot;,
@@ -249,20 +198,17 @@ switch vegetable{
     let vegetableComment = &quot;Verything tastes good in soup.&quot;
 
 }
-</code></pre><p>####函数声明</p>
-<pre><code>func sayContent(name:String,age:Int) -&gt; String{
+</code></pre><h4 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h4><pre><code>func sayContent(name:String,age:Int) -&gt; String{
 
     return &quot;I am \(name),My age is\(age)&quot;
 }
 sayContent(&quot;Jim&quot;, 18)
-</code></pre><p>#####返回多个函数 利用元组</p>
-<pre><code>func getManyResults(name:String,age:Int,address:String) -&gt; (String,Int,String){
+</code></pre><h5 id="返回多个函数-利用元组"><a href="#返回多个函数-利用元组" class="headerlink" title="返回多个函数 利用元组"></a>返回多个函数 利用元组</h5><pre><code>func getManyResults(name:String,age:Int,address:String) -&gt; (String,Int,String){
     return (name,age,address)
 }
 
 getManyResults(&quot;小明&quot;, 18, &quot;长安大街&quot;)
-</code></pre><p>#####函数可变参数</p>
-<pre><code>func addNNums(arrays:Int ...) -&gt;Int{
+</code></pre><h5 id="函数可变参数"><a href="#函数可变参数" class="headerlink" title="函数可变参数"></a>函数可变参数</h5><pre><code>func addNNums(arrays:Int ...) -&gt;Int{
     var sum = 0
 
     for n in arrays{
@@ -283,8 +229,7 @@ addNNums(1,2,3,4)
     return y
 }
 returnResult()
-</code></pre><p>#####闭包 ： 闭合并包裹 </p>
-<pre><code>var strs = [&quot;1110&quot;,&quot;2&quot;,&quot;14&quot;,&quot;115&quot;]
+</code></pre><h5 id="闭包-：-闭合并包裹"><a href="#闭包-：-闭合并包裹" class="headerlink" title="闭包 ： 闭合并包裹"></a>闭包 ： 闭合并包裹</h5><pre><code>var strs = [&quot;1110&quot;,&quot;2&quot;,&quot;14&quot;,&quot;115&quot;]
 func whoIsBiger(s1: String, s2: String) -&gt; Bool {
 
     return s1 &gt; s2;
@@ -328,8 +273,7 @@ func lessThenTen(num : Int) -&gt; Bool{
 var bs = [1,23,4,5]
 
 hasManyMatch(bs,lessThenTen)
-</code></pre><p>####创建一个类</p>
-<p>//普通的类，没有构造函数，所有的用到的 属性必须初始化</p>
+</code></pre><h4 id="创建一个类"><a href="#创建一个类" class="headerlink" title="创建一个类"></a>创建一个类</h4><p>//普通的类，没有构造函数，所有的用到的 属性必须初始化</p>
 <pre><code>class Animal{
 
 var hair : String = &quot;黄色&quot;
@@ -357,8 +301,7 @@ func sayHello(){
 </code></pre><p>//在创建对象的时候，构造函数的参数必须显示的显示出参数的名字</p>
 <pre><code>var peo = People(name: &quot;ming&quot;,age: 18)
 peo.sayHello()
-</code></pre><p>####继承</p>
-<pre><code>class Teacher : People {
+</code></pre><h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><pre><code>class Teacher : People {
 
 var work:String
 
@@ -380,8 +323,7 @@ var teacher = Teacher(work: &quot;Teacher&quot;, name: &quot;Ming&quot;, age: 35
 
 teacher.sayHello()
 teacher.writeToTop(&quot;扫地&quot;)
-</code></pre><p>####枚举</p>
-<pre><code>enum Suit{
+</code></pre><h4 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h4><pre><code>enum Suit{
 
    case Spades,Hearts,Diamonds,Clubs
 
@@ -411,8 +353,7 @@ func color() -&gt; String{
     }
 }
 </code></pre><p>}</p>
-<p>####结构体</p>
-<pre><code>struct Card {
+<h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><pre><code>struct Card {
 var rank: Rank
 var suit: Suit
 
@@ -424,16 +365,14 @@ func simpaleDescription() -&gt; String{
 
 let card = Card(rank: Rank.Three, suit: Suit.Spades)
 var result = card.simpaleDescription()
-</code></pre><p>####枚举、结构体类的区别</p>
-<p>类：在传递过程中传递的时引用<br>结构体和枚举：在传递过程中传递的是值，也就是一个值的副本</p>
-<p>####例子：<br> Ios用swift开发的TodoList和Weather（基站定位，联网刷新，JSON解析）<a href="https://github.com/ccpy/swiftnote" target="_blank" rel="external">点击查看项目代码</a></p>
-<p>#####总结</p>
-<p>感觉swift语法很爽</p>
+</code></pre><h4 id="枚举、结构体类的区别"><a href="#枚举、结构体类的区别" class="headerlink" title="枚举、结构体类的区别"></a>枚举、结构体类的区别</h4><p>类：在传递过程中传递的时引用<br>结构体和枚举：在传递过程中传递的是值，也就是一个值的副本</p>
+<h4 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h4><p> Ios用swift开发的TodoList和Weather（基站定位，联网刷新，JSON解析）<a href="https://github.com/ccpy/swiftnote" target="_blank" rel="external">点击查看项目代码</a></p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>感觉swift语法很爽</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/15/swift编程语言学习/" data-id="cis7casx50010p7jxflr107c1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/15/swift编程语言学习/" data-id="cis7cnqys0011mhjx4jq2p7ns" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li></ul>
@@ -466,7 +405,7 @@ var result = card.simpaleDescription()
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##Auxer制作的原型图在手机里面浏览<br>最近接触到Auxer原型制作工具，本着好奇的心理来做公司项目的原型。熟悉了Auxer的基本操作，和原型制作流程后，感觉很棒，特别是加上一些lib后，看起来跟真正的产品似得。当然这也是Auxer的强大之处，没什么好惊奇的。不明觉厉嘛~ 在我做完产品高保真原型图的时候，Google了一下怎么在手机端直接查看原型，这样的话会显示的更加逼真。可以看到产品成型后的样子，无疑是一个很好的体验。看网络上的大部分都是上传的Auxer自己带的服务器上去。这样无疑最好，但是由于国内网络的原因。访问Auxer提供的服务器不是很慢，就是被墙。体验非常糟糕。但是作为程序员的我，可不会因为这样的问题就算了。这时想到了我大JAVA的开源服务器Tomact，如果我在本地起一个Tomcat服务，然后吧App原型生产的Html保真原型放到Tomact里面，这样的话应该可以跟Auxer提供的服务器是一样的效果。于是就干了起来，结果如预期，哈哈，体验一下吧，亲们。</p>
+        <h2 id="Auxer制作的原型图在手机里面浏览"><a href="#Auxer制作的原型图在手机里面浏览" class="headerlink" title="Auxer制作的原型图在手机里面浏览"></a>Auxer制作的原型图在手机里面浏览</h2><p>最近接触到Auxer原型制作工具，本着好奇的心理来做公司项目的原型。熟悉了Auxer的基本操作，和原型制作流程后，感觉很棒，特别是加上一些lib后，看起来跟真正的产品似得。当然这也是Auxer的强大之处，没什么好惊奇的。不明觉厉嘛~ 在我做完产品高保真原型图的时候，Google了一下怎么在手机端直接查看原型，这样的话会显示的更加逼真。可以看到产品成型后的样子，无疑是一个很好的体验。看网络上的大部分都是上传的Auxer自己带的服务器上去。这样无疑最好，但是由于国内网络的原因。访问Auxer提供的服务器不是很慢，就是被墙。体验非常糟糕。但是作为程序员的我，可不会因为这样的问题就算了。这时想到了我大JAVA的开源服务器Tomact，如果我在本地起一个Tomcat服务，然后吧App原型生产的Html保真原型放到Tomact里面，这样的话应该可以跟Auxer提供的服务器是一样的效果。于是就干了起来，结果如预期，哈哈，体验一下吧，亲们。</p>
 <ul>
 <li>下载Tomcat（这个不用说了吧 -、- ）</li>
 <li>配置Tomcat的环境变量。</li>
@@ -479,7 +418,7 @@ var result = card.simpaleDescription()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/11/20/Auxer制作原型图，在手机里浏览/" data-id="cis7caswi0001p7jxn5gz41if" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/11/20/Auxer制作原型图，在手机里浏览/" data-id="cis7cnqy40001mhjxf84oi9fx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -544,7 +483,7 @@ var result = card.simpaleDescription()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/10/10/Android屏幕适配/" data-id="cis7caswf0000p7jxqlr89s46" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/10/10/Android屏幕适配/" data-id="cis7cnqy00000mhjxyc56fg0e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android适配机型/">Android适配机型</a></li></ul>
@@ -577,9 +516,7 @@ var result = card.simpaleDescription()
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##工作总结</p>
-<p>###android访问wcf时，结构性数据传递方法。—— 续上 ——</p>
-<blockquote>
+        <h2 id="工作总结"><a href="#工作总结" class="headerlink" title="工作总结"></a>工作总结</h2><h3 id="android访问wcf时，结构性数据传递方法。——-续上-——"><a href="#android访问wcf时，结构性数据传递方法。——-续上-——" class="headerlink" title="android访问wcf时，结构性数据传递方法。—— 续上 ——"></a>android访问wcf时，结构性数据传递方法。—— 续上 ——</h3><blockquote>
 <p>在程序当中，list，set，map，这样的集合会经常用到。那么在android访问wcf中是怎么传递这样的数据呢，正常的话，我们直接传进去我们的list、set、map，或者是我们自定义的实体对象，程序就会报一个“没有序列化的错误信息”，很明显，在网络中传递对象，必须要序列化。而且Soap有自己特殊的序列化接口，我们实现起来会很麻烦，（自己觉得麻烦~）。今天我们就来说一下另一个方法。通过上次的文章，我们知道，在android客户端访问wcf中，可以直接向request调用addPropert()，传进去String的参数，那么我们可以推出，怎么把list、set、map中的结构性的数据转换成String呢。答案当然是JSON了。在androidAPI中，为我们提供了相应的JSON对象，例如：JSONObject、JSONArray、等等，这样就可以把集合中包含的实体，通过相应的方法，就可以把集合转换成String对象，这样呢，就可以直接传递了，从而不用序列化对象。下面看代码：</p>
 </blockquote>
 <pre><code>public class People {
@@ -634,15 +571,14 @@ var result = card.simpaleDescription()
 
     //...省略set、get方法~
 }
-</code></pre><p>###ListView背景点击效果消失</p>
-<blockquote>
+</code></pre><h3 id="ListView背景点击效果消失"><a href="#ListView背景点击效果消失" class="headerlink" title="ListView背景点击效果消失"></a>ListView背景点击效果消失</h3><blockquote>
 <p>其中还遇到一个小问题，就是当listview的itemview设置了background属性的时候，且设置的属性为静态的。这样的话，listview就不会响应点击事件的效果了(默认listview的Item点击事件背景颜色变化是黄色~)。解决办法是把背景设置成selector的背景。</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/07/12/list、set、map/" data-id="cis7casx3000tp7jx3ugi3vu3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/07/12/list、set、map/" data-id="cis7cnqyp000umhjx561ja9x0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android自定义对象序列化/">android自定义对象序列化</a></li></ul>
@@ -675,8 +611,7 @@ var result = card.simpaleDescription()
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###android端插件平台开发</p>
-<blockquote>
+        <h3 id="android端插件平台开发"><a href="#android端插件平台开发" class="headerlink" title="android端插件平台开发"></a>android端插件平台开发</h3><blockquote>
 <p>最近在公司中，android端的插件平台开发，以前没有接触过这方面的东西，接到手后先是小激动，后来就是接踵而来的问题了。在PC端有很多插件话的软件，最为java程序员熟知的Eclipse就是插件的宿主程序，很多的功能都是经过集成插件来实现的，好处大家也看到了。你需要什么，你就可以去安装什么插件，而不是所有管你有没有用的功能都给你加进去，经过几天的琢磨，和在网上找的一些资料，目前插件平台已经具备了插件话的模型。后期还要完善的就是其android应用开发结构更清晰，使界面跟业务处理逻辑更好的解耦，在开发插件的时候，根据公司的约定，就可以完成功能协同开发。底层连接数据库的代码，就可以根据Domain，用代码生成器自动生成，解放程序员的劳动力。下面是我参考的一些资料：<br>在插件话过程中你遇到的问题，大多数都可以在这里找到答案，包括最为头疼的上下文、资源文件的问题，</p>
 </blockquote>
 <ol>
@@ -695,7 +630,7 @@ var result = card.simpaleDescription()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/07/12/platform开发/" data-id="cis7casx4000vp7jx2ginht6k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/07/12/platform开发/" data-id="cis7cnqyr000wmhjxhbsnbwo0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -728,8 +663,7 @@ var result = card.simpaleDescription()
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###Android访问wcf服务时候遇到的问题</p>
-<blockquote>
+        <h3 id="Android访问wcf服务时候遇到的问题"><a href="#Android访问wcf服务时候遇到的问题" class="headerlink" title="Android访问wcf服务时候遇到的问题"></a>Android访问wcf服务时候遇到的问题</h3><blockquote>
 <p>由于公司后台服务器，用的是wcf，在android中访问wcf是跟其他访问webservice是有出入的。访问webservice时，数据传输是用json，或者是xml。当然在wcf原理也是这样的。android反问wcf用的一个第三方的包ksoap2来访问的。当然你也可以自己去实现访问客户端，进行数据交互，但是实现起来无非就是自己实现了一遍ksoap2。我就不再重复制造轮子了..有兴趣的可以自己实现一下，我在这里就是记录一下ksoap2的用法：</p>
 </blockquote>
 <pre><code>public boolean login(User u) {
@@ -769,8 +703,7 @@ var result = card.simpaleDescription()
 <li><p>SoapPrimitive 跟SoapObject对象很相似，简单理解为：在返回多个对象是一个集合的时候用SoapObject,在返回对象是单一个对象的时候，用SaopPrimitive </p>
 </li>
 </ul>
-<p>###AndroidSpinner控件设置Width</p>
-<blockquote>
+<h3 id="AndroidSpinner控件设置Width"><a href="#AndroidSpinner控件设置Width" class="headerlink" title="AndroidSpinner控件设置Width"></a>AndroidSpinner控件设置Width</h3><blockquote>
 <p>android Spinner自适应宽度，Spinner默认的弹出来一个窗口，fill_width宽度的窗口，当你数据很少的时候用户体验会很差，在网上看了一些朋友的说法就是设置spinner所用的adapter中填充的布局的宽度，但是这样的方法是实现不了spinner下拉菜单变窄的，于是我就看了下Spinner源码。在Spinner类中有这样的片段。</p>
 </blockquote>
 <pre><code>// Only measure this many items to get a decent max width.
@@ -822,7 +755,7 @@ public void setDropDownWidth(int pixels) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/22/android访问wcf和Spinner宽度/" data-id="cis7caswy000hp7jxbnqdjzdj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/22/android访问wcf和Spinner宽度/" data-id="cis7cnqyj000hmhjx6wjcre2u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android、wcf、webService/">android、wcf、webService</a></li></ul>
@@ -855,7 +788,7 @@ public void setDropDownWidth(int pixels) {
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###当你发生这样的错误：INSTALL<em> FAILED</em> OLDER_SDK<br>如果你用的是andorid studio编辑器的话，有可能遇到这样的错误Failure [INSTALL_FAILED_OLDER_SDK]，这是由于编译时，针对的平台是你所设置的平台，而在你运行项目的时候，所用的平台是其他的，例如，你编译的是4.0 而运行用的设备的版本是4.4或者其他的，这是就会造成这样的错误。</p>
+        <h3 id="当你发生这样的错误：INSTALL-FAILED-OLDER-SDK"><a href="#当你发生这样的错误：INSTALL-FAILED-OLDER-SDK" class="headerlink" title="当你发生这样的错误：INSTALL FAILED OLDER_SDK"></a>当你发生这样的错误：INSTALL<em> FAILED</em> OLDER_SDK</h3><p>如果你用的是andorid studio编辑器的话，有可能遇到这样的错误Failure [INSTALL_FAILED_OLDER_SDK]，这是由于编译时，针对的平台是你所设置的平台，而在你运行项目的时候，所用的平台是其他的，例如，你编译的是4.0 而运行用的设备的版本是4.4或者其他的，这是就会造成这样的错误。</p>
 <p>办法，你可以修改build.gradle文件中的</p>
 <pre><code>android {
     compileSdkVersion 18
@@ -871,7 +804,7 @@ public void setDropDownWidth(int pixels) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/12/andoridINSTALL_FAILED_OLDER_SDK/" data-id="cis7caswn0005p7jxpiqskirf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/06/12/andoridINSTALL_FAILED_OLDER_SDK/" data-id="cis7cnqy90005mhjxkeosvp10" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -904,9 +837,7 @@ public void setDropDownWidth(int pixels) {
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##Android ListView图片异步加载，和图片错乱</p>
-<p>####图片管理（下载、缓存）</p>
-<p>在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享。</p>
+        <h2 id="Android-ListView图片异步加载，和图片错乱"><a href="#Android-ListView图片异步加载，和图片错乱" class="headerlink" title="Android ListView图片异步加载，和图片错乱"></a>Android ListView图片异步加载，和图片错乱</h2><h4 id="图片管理（下载、缓存）"><a href="#图片管理（下载、缓存）" class="headerlink" title="图片管理（下载、缓存）"></a>图片管理（下载、缓存）</h4><p>在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享。</p>
 <blockquote>
 <p>图片管理类：</p>
 </blockquote>
@@ -1115,8 +1046,7 @@ public static int calculateInSampleSize(BitmapFactory.Options options,
 }
 }
 </code></pre><p>有了这两个类在图片出来上就很简单了。在图片下载的时候一定要异步去下载，异步在Android中有很多中方式，例如：AsyncTask、IntentService、Thread这些都可以完成异步操作。</p>
-<p>####图片错位的处理</p>
-<p>在listview中加载图片，为了listview的性能，经常会重用convertView,如果只重用contentView，即使有图片加载，也不会发生图片的错位。如果只有异步，没有重用convertView，也不会发生图片错位。且这种做法会使listview变得很卡，体验很差。当两者都有的时候，就会发生错位（原因网上有一大堆）。网上有好多答案，是在用setTag的方法来解决的。且这样以来就不合适用viewHolder来优化listview了，且代码看着很乱，我自己的做法是，在viweHoler类中加入一个属性position。<code>position</code>这个属性是在标示viewHoler的唯一性的。每次为viewholder.imageview设置图片的时候，判断poisition和当前的位置是否相等，如果相等则把当前的Bitmap设置道当前的imageview上。代码如下：</p>
+<h4 id="图片错位的处理"><a href="#图片错位的处理" class="headerlink" title="图片错位的处理"></a>图片错位的处理</h4><p>在listview中加载图片，为了listview的性能，经常会重用convertView,如果只重用contentView，即使有图片加载，也不会发生图片的错位。如果只有异步，没有重用convertView，也不会发生图片错位。且这种做法会使listview变得很卡，体验很差。当两者都有的时候，就会发生错位（原因网上有一大堆）。网上有好多答案，是在用setTag的方法来解决的。且这样以来就不合适用viewHolder来优化listview了，且代码看着很乱，我自己的做法是，在viweHoler类中加入一个属性position。<code>position</code>这个属性是在标示viewHoler的唯一性的。每次为viewholder.imageview设置图片的时候，判断poisition和当前的位置是否相等，如果相等则把当前的Bitmap设置道当前的imageview上。代码如下：</p>
 <pre><code>public class BookListAdapter extends BaseAdapter {
 
 private List&lt;Book&gt; books;
@@ -1220,18 +1150,62 @@ class BookImageAsyncTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
 
 }
 </code></pre><p>这样写起来代码就很好看了。且清晰易懂。</p>
-<p>####扯淡</p>
-<p>最近面试一哥们，问他用什么开发工具，他还是停留在Eclipse时代，想想简直可怕，特别是在windos的响应速度上，不谈了。我推荐他用IDEA。其中付费版的包括了Android、Java的大部分的框架，且有一个利器就是TestRESTWebService，在和服务器接口对接、调试的时候很方便。DataBase工具看起数据库也很方便，查看各种各样的数据库哦。Commander用起来也很方便，可以轻松的查看一个项目的结构，类结构，。相当不错。还集成了Git、Svn、Cvs等版本控制插件，用起来不要太爽。墙裂推荐！！</p>
-<p>####总结</p>
-<p>图片处理在Android开发中是家常便饭，为了不一直重复造轮子，Google的一个开源项目Volley是一个很不错的选择。你可以在Github上找到Volley的源代码。有了Volley在图片处理方面就很轻松了。</p>
+<h4 id="扯淡"><a href="#扯淡" class="headerlink" title="扯淡"></a>扯淡</h4><p>最近面试一哥们，问他用什么开发工具，他还是停留在Eclipse时代，想想简直可怕，特别是在windos的响应速度上，不谈了。我推荐他用IDEA。其中付费版的包括了Android、Java的大部分的框架，且有一个利器就是TestRESTWebService，在和服务器接口对接、调试的时候很方便。DataBase工具看起数据库也很方便，查看各种各样的数据库哦。Commander用起来也很方便，可以轻松的查看一个项目的结构，类结构，。相当不错。还集成了Git、Svn、Cvs等版本控制插件，用起来不要太爽。墙裂推荐！！</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>图片处理在Android开发中是家常便饭，为了不一直重复造轮子，Google的一个开源项目Volley是一个很不错的选择。你可以在Github上找到Volley的源代码。有了Volley在图片处理方面就很轻松了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/20/android_listview图片异步加载，和图片错乱/" data-id="cis7caswx000gp7jxxrmfsm4v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/20/android_listview图片异步加载，和图片错乱/" data-id="cis7cnqyf000cmhjxkgxc5l7i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android简洁架构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/05/12/android简洁架构/">Android简洁架构</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-05-11T16:00:00.000Z" itemprop="datePublished">05-12-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Android原生的开发"><a href="#Android原生的开发" class="headerlink" title="Android原生的开发"></a>Android原生的开发</h3><blockquote>
+<p>都说Android在开发中，采用了MVC模式，但是在开发过程中，能感觉到整个Activity兼职于界面层，控制层。且Activity和界面层耦合度相当高，如果界面的空间要更改，整个Activity的实现要跟随着View层的改动而改动，这样的开发架构，实在是不够灵活，扩展性差，如果需求一改动基本上要不原来的实现再重新实现一遍，在开发过程中我感觉到Activity担任的职责太多，代码逻辑往往不是很清晰，于是就想找其他一种模式来代替Android原生的开发模式，能把Activity从混乱的结构中解脱出来。</p>
+</blockquote>
+<h3 id="MVP模式"><a href="#MVP模式" class="headerlink" title="MVP模式"></a>MVP模式</h3><blockquote>
+<p>在github上国外的大神在架构上提出了MVP开发架构，类似于MVC开发模式，这里的字母分别指代为：M -&gt; Model,V -&gt; View, P -&gt; Presenter。这样的开发模式，可以把Activity从复杂的Control中截图出来，把所有的业务逻辑的控制，都在Presenter中处理，而Activity只是一个Presenter的持有者，在activity中初始化，且在Presenter中完成空间的监听事件，以及界面内容的渲染。Presenter中提供了所有的业务请求代码的入口。</p>
+</blockquote>
+<h3 id="MVP的进阶MVVM模式"><a href="#MVP的进阶MVVM模式" class="headerlink" title="MVP的进阶MVVM模式"></a>MVP的进阶MVVM模式</h3><blockquote>
+<p>MVVM在微软的技术WPF中得到了广泛的应用，字母分别值：M-Model,V-View,VM-ViewModel。MVVM是由MVP演化过来的。模式很相似，你有一个View控件，分别要有一个对应的ViewModel，来绑定View上的所有控件。在WPF中支持双向绑定，和单向绑定。View的显示跟随ViewModel的绑定的值改变而改变。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/12/android简洁架构/" data-id="cis7cnqyi000gmhjxoc3udizr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
 
     </footer>
   </div>

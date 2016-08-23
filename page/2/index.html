@@ -72,9 +72,7 @@
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###andorid Preference Screens的用法，及注意事项。</p>
-<p>#####PreferenceScreen首选项的资源定义：</p>
-<pre><code>在项目res/xml文件夹下创建。
+        <h3 id="andorid-Preference-Screens的用法，及注意事项。"><a href="#andorid-Preference-Screens的用法，及注意事项。" class="headerlink" title="andorid Preference Screens的用法，及注意事项。"></a>andorid Preference Screens的用法，及注意事项。</h3><h5 id="PreferenceScreen首选项的资源定义："><a href="#PreferenceScreen首选项的资源定义：" class="headerlink" title="PreferenceScreen首选项的资源定义："></a>PreferenceScreen首选项的资源定义：</h5><pre><code>在项目res/xml文件夹下创建。
 
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;PreferenceScreen xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
@@ -86,8 +84,7 @@
 &lt;/PreferenceScreen&gt;
 </code></pre><blockquote>
 <p>在定义设置界面的组件的时候，有几个属性是应该指定的。title、key、summary、defaultValue.从字面上，也可以看出，这是指定组件的什么属性的，不再累赘。而控件的类别，也是分很多种：CheckBoxPreference、EditTextPreference、ListPreference、MultiScreenListPreference、RingtonePreference。哎呀这些官网上都有。罗嗦了。。</p>
-<p>#####PreferenceHeader资源定义</p>
-<p>PreferenceHeader资源是对Preference Fragment在Preference Activity中是怎样分组显示的。简单的理解为是对设置选项的分类而已。但是，Preference Header对不同屏幕做了适应。在平板和小屏的设备上显示的是不同的。</p>
+<h5 id="PreferenceHeader资源定义"><a href="#PreferenceHeader资源定义" class="headerlink" title="PreferenceHeader资源定义"></a>PreferenceHeader资源定义</h5><p>PreferenceHeader资源是对Preference Fragment在Preference Activity中是怎样分组显示的。简单的理解为是对设置选项的分类而已。但是，Preference Header对不同屏幕做了适应。在平板和小屏的设备上显示的是不同的。</p>
 </blockquote>
 <pre><code>&lt;preference-headers xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
     &lt;header android:fragment=&quot;com.cpy.newwork.MyPreference&quot;
@@ -97,8 +94,7 @@
         &gt;
     &lt;/header&gt;
 &lt;/preference-headers&gt;
-</code></pre><p>###Preference Activity 和Preference Fragment</p>
-<blockquote>
+</code></pre><h3 id="Preference-Activity-和Preference-Fragment"><a href="#Preference-Activity-和Preference-Fragment" class="headerlink" title="Preference Activity 和Preference Fragment"></a>Preference Activity 和Preference Fragment</h3><blockquote>
 <p>在android(3.0)，API=11时，首选项框架做了很大的修改，增加了Preference Fragment 和 Preference Header的概念，现在这是创建首选项的首选技术。而今天主要是介绍Preference Fragment的应用，和如何兼容3.0以前的android版本。在3.0以前的版本中，主要是用Preference Activity来对设置界面的加载。而3.0的诞生，主要是针对平板、或者大屏做了很多的设计。且Fragment就是其中之一了。所以Preference Fragment的诞生也是理所当然的。在3.0加载设置界面xml文件的时候，直接是其继承PreferenceFragment，重写onCreate的方法，并调用addPreferencesFromResource(R.xml.preferencescreen)方法。</p>
 </blockquote>
 <pre><code>public class MyPreference extends PreferenceFragment {
@@ -147,7 +143,7 @@ SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferen
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/12/andoridPreference/" data-id="cis7caswq0007p7jxku0b8ul4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/12/andoridPreference/" data-id="cis7cnqyb0007mhjx7rv3k8qq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -180,10 +176,8 @@ SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferen
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##java IO的梳理</p>
-<p>自己记录的理解。因为java的IO太复杂，所以他的功能也很强大。扎实的理解java的IO还是很重要的。今天在这里做下笔记。提升自己的理解。</p>
-<p>###字节流</p>
-<blockquote>
+        <h2 id="java-IO的梳理"><a href="#java-IO的梳理" class="headerlink" title="java IO的梳理"></a>java IO的梳理</h2><p>自己记录的理解。因为java的IO太复杂，所以他的功能也很强大。扎实的理解java的IO还是很重要的。今天在这里做下笔记。提升自己的理解。</p>
+<h3 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h3><blockquote>
 <p>流的概念。java会把数据读取到内存中，而内存中的数据就是一个“流”。</p>
 <p>字节流：根据输入和输出划分，有InputStream 和 OutputStream,这两个都是抽象类。不能被实例化。</p>
 </blockquote>
@@ -211,8 +205,7 @@ SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferen
    |--BufferedOutputStream 类实现缓冲的输出流。通过设置这种输出流，应用程序就可以将各个字节写入底层输出流中，
     而不必针对每次字节写入调用底层系统
    |--DataOutputStream 数据输出流允许应用程序以适当方式将基本 Java 数据类型写入输出流中
-</code></pre><p>###字符流    </p>
-<blockquote>
+</code></pre><h3 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h3><blockquote>
 <p>字符流：根据输入输出划分，Reader 和 Writer 同样这两个也是抽象类。不能被实例化。</p>
 </blockquote>
 <p>主要子类：</p>
@@ -232,8 +225,7 @@ SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferen
    |--FileWriter 用来写入字符文件的便捷类
 |--StringWriter(字符串流)    
 |--PrintWriter （格式化输出）
-</code></pre><p>###java的进程控制</p>
-<p>Process java的进程类</p>
+</code></pre><h3 id="java的进程控制"><a href="#java的进程控制" class="headerlink" title="java的进程控制"></a>java的进程控制</h3><p>Process java的进程类</p>
 <p>可以通过ProcessBuilder.start() 和 Runtime.exec 方法创建一个本机进程，并返回 Process 子类的一个实例</p>
 <pre><code>构造方法：
 ProcessBuilder(List&lt;String&gt; command) 
@@ -259,7 +251,7 @@ ProcessBuilder(String... command)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/03/13/javaIO/" data-id="cis7casx1000op7jxocjsku54" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/03/13/javaIO/" data-id="cis7cnqym000pmhjxr4zm230r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-IO/">Java IO</a></li></ul>
@@ -292,8 +284,7 @@ ProcessBuilder(String... command)
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###android开发之actionbar无法显示overflow menu的解决办法</p>
-<p>今天在开发actionbar的时候，遇到一个奇葩的问题~，就是按照官方的文档创建actionbar的时候。在设置溢出菜单选项的时候，不管我上面有多少菜单项，都无法溢出，最多就是显示出来几个，在网上找了好久，也没有找到好的办法，后来在群里询问，有的人说是因为我设置的showAsAction属性有错误，我设置的是ifRoom|withText，然而我按照他说的改成了never，也是不行。最后不得不去认真的看官方文档，官方文档解释是这样的：</p>
+        <h3 id="android开发之actionbar无法显示overflow-menu的解决办法"><a href="#android开发之actionbar无法显示overflow-menu的解决办法" class="headerlink" title="android开发之actionbar无法显示overflow menu的解决办法"></a>android开发之actionbar无法显示overflow menu的解决办法</h3><p>今天在开发actionbar的时候，遇到一个奇葩的问题~，就是按照官方的文档创建actionbar的时候。在设置溢出菜单选项的时候，不管我上面有多少菜单项，都无法溢出，最多就是显示出来几个，在网上找了好久，也没有找到好的办法，后来在群里询问，有的人说是因为我设置的showAsAction属性有错误，我设置的是ifRoom|withText，然而我按照他说的改成了never，也是不行。最后不得不去认真的看官方文档，官方文档解释是这样的：</p>
 <blockquote>
 <p>The action overflow in the action bar provides access to your app’s less frequently used actions. The overflow icon only appears on phones that have no menu hardware keys. Phones with menu keys display the action overflow when the user presses the key.<a href="http://developer.android.com/design/patterns/actionbar.html#considerations-split-action-bars" target="_blank" rel="external">点击链接</a></p>
 <p>大概意思就是：溢出菜单里面存放些不常用的功能选项，溢出菜单图标只出现在手机硬件没有菜单键的设备上，当用户按下溢出菜单后，溢出菜单会显示出存放的功能选项。</p>
@@ -316,7 +307,7 @@ ProcessBuilder(String... command)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/03/11/androidActionBarmenu菜单无法显示的问题/" data-id="cis7caswr000ap7jxyr5o1v4t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/03/11/androidActionBarmenu菜单无法显示的问题/" data-id="cis7cnqyd000amhjxj08b5vag" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ActionBar/">ActionBar</a></li></ul>
@@ -349,8 +340,8 @@ ProcessBuilder(String... command)
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###由于在写刷机脚本的时候，经常用到各种adb命令。在此记下记录，如有不足，欢迎补充。<br>       adb shell am start -n 包名/包名+类名（-n 类名,-a action,-d date,-c category,-e 扩展数据）</p>
-<p>做过android的都知道在启动Activity，或者是broadcast、service时候可以通过Intent启动。在intent启动的时可以根据实际的需求，向Activity传入需要的参数，在此呢，adb shell启动的时候，就可以设定参数去启动了。</p>
+        <h3 id="由于在写刷机脚本的时候，经常用到各种adb命令。在此记下记录，如有不足，欢迎补充。"><a href="#由于在写刷机脚本的时候，经常用到各种adb命令。在此记下记录，如有不足，欢迎补充。" class="headerlink" title="由于在写刷机脚本的时候，经常用到各种adb命令。在此记下记录，如有不足，欢迎补充。"></a>由于在写刷机脚本的时候，经常用到各种adb命令。在此记下记录，如有不足，欢迎补充。</h3><pre><code>adb shell am start -n 包名/包名+类名（-n 类名,-a action,-d date,-c category,-e 扩展数据）
+</code></pre><p>做过android的都知道在启动Activity，或者是broadcast、service时候可以通过Intent启动。在intent启动的时可以根据实际的需求，向Activity传入需要的参数，在此呢，adb shell启动的时候，就可以设定参数去启动了。</p>
 <ul>
 <li>n 参数是设置启动的目标Activity</li>
 <li>a 设置启动Activity的action，</li>
@@ -383,7 +374,7 @@ adb help 打印出adb所支持的所有命令
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2013/12/12/adb命令/" data-id="cis7caswm0004p7jxydjruf02" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2013/12/12/adb命令/" data-id="cis7cnqy70004mhjx1wna662t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
@@ -416,35 +407,29 @@ adb help 打印出adb所支持的所有命令
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##在windows下安装python mysqldb</p>
-<p>在windows下安装mysqldb，直接选择相应的版本，双击进行安装即可。<a href="http://www.codegood.com/downloads" target="_blank" rel="external">点击下载</a></p>
-<p>####python包管理整理</p>
-<p>在python开发中经常用到的一个工具，pip，在网上搜这方面的知识，会有一大堆。在此不在累赘。在*unix下安装python的pip会很容易安装，在windows下，就要用到一个脚本去安装。<a href="https://bootstrap.pypa.io/ez_setup.py" target="_blank" rel="external">点击下载</a>,这个是安装easy_install 的。然后可以用easy_install去安装pip工具</p>
-<p>####python的虚拟环境</p>
-<p>python开发的时候，经常会有N多的三方库，这就造成了python环境的混乱，和臃肿。所以，在这里我们用virtualenv去创建项目的工作的python环境。用Virtualenvwrapper去管理python的虚拟环境</p>
+        <h2 id="在windows下安装python-mysqldb"><a href="#在windows下安装python-mysqldb" class="headerlink" title="在windows下安装python mysqldb"></a>在windows下安装python mysqldb</h2><p>在windows下安装mysqldb，直接选择相应的版本，双击进行安装即可。<a href="http://www.codegood.com/downloads" target="_blank" rel="external">点击下载</a></p>
+<h4 id="python包管理整理"><a href="#python包管理整理" class="headerlink" title="python包管理整理"></a>python包管理整理</h4><p>在python开发中经常用到的一个工具，pip，在网上搜这方面的知识，会有一大堆。在此不在累赘。在*unix下安装python的pip会很容易安装，在windows下，就要用到一个脚本去安装。<a href="https://bootstrap.pypa.io/ez_setup.py" target="_blank" rel="external">点击下载</a>,这个是安装easy_install 的。然后可以用easy_install去安装pip工具</p>
+<h4 id="python的虚拟环境"><a href="#python的虚拟环境" class="headerlink" title="python的虚拟环境"></a>python的虚拟环境</h4><p>python开发的时候，经常会有N多的三方库，这就造成了python环境的混乱，和臃肿。所以，在这里我们用virtualenv去创建项目的工作的python环境。用Virtualenvwrapper去管理python的虚拟环境</p>
 <p>1.创建一个虚拟环境</p>
 <pre><code>virtualenv env1 
 </code></pre><p>2.然后进到虚拟环境中去用pip安装所需的三方库，</p>
 <pre><code>pip install [第三方库]
 </code></pre><p>3.所有的虚拟环境，互不干扰</p>
-<p>####python的requirements</p>
-<p>1.生成requirements.txt文件</p>
+<h4 id="python的requirements"><a href="#python的requirements" class="headerlink" title="python的requirements"></a>python的requirements</h4><p>1.生成requirements.txt文件</p>
 <pre><code>pip freeze &gt; requirements.txt
 </code></pre><p>2.用requirements.txt文件下载项目所依赖的三方库</p>
 <pre><code>pip install -r requirements.txt
-</code></pre><p>####python + pychram + django快速开发方案</p>
-<p>配置django设置。</p>
+</code></pre><h4 id="python-pychram-django快速开发方案"><a href="#python-pychram-django快速开发方案" class="headerlink" title="python + pychram + django快速开发方案"></a>python + pychram + django快速开发方案</h4><p>配置django设置。</p>
 <p>1.files-&gt; setting -&gt; django support </p>
 <p>2.然后选择项目目录。再选择setting文件，最后选择manage.py文件。</p>
 <p>3.Ctrl + Alt + R 选择要执行的manage.py的命令</p>
-<p>####python+django练习</p>
-<p>这是我在学习python的时候，做的一个博客。已经支持代码高亮，前端界面用的是一些css库。整个的blog的内容很简洁，支持markdown编辑文件，后台管理直接用的三方库，来支持markdon输入，评论系统用的国内的多说网，在这里感谢多少网的支持，由于本人前段技术有限，所以，以后会逐渐的加入新功能，譬如：文章分类，文章标签等功能。</p>
+<h4 id="python-django练习"><a href="#python-django练习" class="headerlink" title="python+django练习"></a>python+django练习</h4><p>这是我在学习python的时候，做的一个博客。已经支持代码高亮，前端界面用的是一些css库。整个的blog的内容很简洁，支持markdown编辑文件，后台管理直接用的三方库，来支持markdon输入，评论系统用的国内的多说网，在这里感谢多少网的支持，由于本人前段技术有限，所以，以后会逐渐的加入新功能，譬如：文章分类，文章标签等功能。</p>
 <p><img src="http://ccpy.qiniudn.com/test.jpg" alt="图片"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2013/11/22/安装pythonmysqldb遇到的问题/" data-id="cis7casx70013p7jx4hkhxtq7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2013/11/22/安装pythonmysqldb遇到的问题/" data-id="cis7cnqyu0014mhjxmccm4o5d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

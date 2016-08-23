@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2014/05/20/android_listview图片异步加载，和图片错乱/index.html">
 <meta property="og:site_name" content="bogou">
 <meta property="og:description" content="在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享">
-<meta property="og:updated_time" content="2016-08-23T10:25:53.032Z">
+<meta property="og:updated_time" content="2016-08-23T10:47:47.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决Android ListView图片异步加载，和图片错乱">
 <meta name="twitter:description" content="在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享">
@@ -76,9 +76,7 @@
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##Android ListView图片异步加载，和图片错乱</p>
-<p>####图片管理（下载、缓存）</p>
-<p>在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享。</p>
+        <h2 id="Android-ListView图片异步加载，和图片错乱"><a href="#Android-ListView图片异步加载，和图片错乱" class="headerlink" title="Android ListView图片异步加载，和图片错乱"></a>Android ListView图片异步加载，和图片错乱</h2><h4 id="图片管理（下载、缓存）"><a href="#图片管理（下载、缓存）" class="headerlink" title="图片管理（下载、缓存）"></a>图片管理（下载、缓存）</h4><p>在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享。</p>
 <blockquote>
 <p>图片管理类：</p>
 </blockquote>
@@ -287,8 +285,7 @@ public static int calculateInSampleSize(BitmapFactory.Options options,
 }
 }
 </code></pre><p>有了这两个类在图片出来上就很简单了。在图片下载的时候一定要异步去下载，异步在Android中有很多中方式，例如：AsyncTask、IntentService、Thread这些都可以完成异步操作。</p>
-<p>####图片错位的处理</p>
-<p>在listview中加载图片，为了listview的性能，经常会重用convertView,如果只重用contentView，即使有图片加载，也不会发生图片的错位。如果只有异步，没有重用convertView，也不会发生图片错位。且这种做法会使listview变得很卡，体验很差。当两者都有的时候，就会发生错位（原因网上有一大堆）。网上有好多答案，是在用setTag的方法来解决的。且这样以来就不合适用viewHolder来优化listview了，且代码看着很乱，我自己的做法是，在viweHoler类中加入一个属性position。<code>position</code>这个属性是在标示viewHoler的唯一性的。每次为viewholder.imageview设置图片的时候，判断poisition和当前的位置是否相等，如果相等则把当前的Bitmap设置道当前的imageview上。代码如下：</p>
+<h4 id="图片错位的处理"><a href="#图片错位的处理" class="headerlink" title="图片错位的处理"></a>图片错位的处理</h4><p>在listview中加载图片，为了listview的性能，经常会重用convertView,如果只重用contentView，即使有图片加载，也不会发生图片的错位。如果只有异步，没有重用convertView，也不会发生图片错位。且这种做法会使listview变得很卡，体验很差。当两者都有的时候，就会发生错位（原因网上有一大堆）。网上有好多答案，是在用setTag的方法来解决的。且这样以来就不合适用viewHolder来优化listview了，且代码看着很乱，我自己的做法是，在viweHoler类中加入一个属性position。<code>position</code>这个属性是在标示viewHoler的唯一性的。每次为viewholder.imageview设置图片的时候，判断poisition和当前的位置是否相等，如果相等则把当前的Bitmap设置道当前的imageview上。代码如下：</p>
 <pre><code>public class BookListAdapter extends BaseAdapter {
 
 private List&lt;Book&gt; books;
@@ -392,15 +389,13 @@ class BookImageAsyncTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
 
 }
 </code></pre><p>这样写起来代码就很好看了。且清晰易懂。</p>
-<p>####扯淡</p>
-<p>最近面试一哥们，问他用什么开发工具，他还是停留在Eclipse时代，想想简直可怕，特别是在windos的响应速度上，不谈了。我推荐他用IDEA。其中付费版的包括了Android、Java的大部分的框架，且有一个利器就是TestRESTWebService，在和服务器接口对接、调试的时候很方便。DataBase工具看起数据库也很方便，查看各种各样的数据库哦。Commander用起来也很方便，可以轻松的查看一个项目的结构，类结构，。相当不错。还集成了Git、Svn、Cvs等版本控制插件，用起来不要太爽。墙裂推荐！！</p>
-<p>####总结</p>
-<p>图片处理在Android开发中是家常便饭，为了不一直重复造轮子，Google的一个开源项目Volley是一个很不错的选择。你可以在Github上找到Volley的源代码。有了Volley在图片处理方面就很轻松了。</p>
+<h4 id="扯淡"><a href="#扯淡" class="headerlink" title="扯淡"></a>扯淡</h4><p>最近面试一哥们，问他用什么开发工具，他还是停留在Eclipse时代，想想简直可怕，特别是在windos的响应速度上，不谈了。我推荐他用IDEA。其中付费版的包括了Android、Java的大部分的框架，且有一个利器就是TestRESTWebService，在和服务器接口对接、调试的时候很方便。DataBase工具看起数据库也很方便，查看各种各样的数据库哦。Commander用起来也很方便，可以轻松的查看一个项目的结构，类结构，。相当不错。还集成了Git、Svn、Cvs等版本控制插件，用起来不要太爽。墙裂推荐！！</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>图片处理在Android开发中是家常便饭，为了不一直重复造轮子，Google的一个开源项目Volley是一个很不错的选择。你可以在Github上找到Volley的源代码。有了Volley在图片处理方面就很轻松了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/20/android_listview图片异步加载，和图片错乱/" data-id="cis7caswx000gp7jxxrmfsm4v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/20/android_listview图片异步加载，和图片错乱/" data-id="cis7cnqyf000cmhjxkgxc5l7i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -421,9 +416,9 @@ class BookImageAsyncTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
     </a>
   
   
-    <a href="/2014/05/12/andoridPreference/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/05/12/android简洁架构/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">andorid设置界面的框架，Preference Screens用法。</div>
+      <div class="article-nav-title">Android简洁架构</div>
     </a>
   
 </nav>

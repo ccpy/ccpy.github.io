@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2014/12/15/swift编程语言学习/index.html">
 <meta property="og:site_name" content="bogou">
 <meta property="og:description" content="前几天刚入手了mac pro ，体验不要太屌。第一件事当然是下载Xcode了。在苹果公司推出新语言的第一天就跟同事讨论了，当时只是简单的看了一下语法结构，现在有条件了当然要实现一下了。come on！">
-<meta property="og:updated_time" content="2016-08-23T10:26:32.564Z">
+<meta property="og:updated_time" content="2016-08-23T10:49:26.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习。">
 <meta name="twitter:description" content="前几天刚入手了mac pro ，体验不要太屌。第一件事当然是下载Xcode了。在苹果公司推出新语言的第一天就跟同事讨论了，当时只是简单的看了一下语法结构，现在有条件了当然要实现一下了。come on！">
@@ -76,18 +76,13 @@
   <div class="article-inner">
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##Swift编程语言学习</p>
-<h4 id="xcode6-1一个好玩的东西playGround"><a href="#xcode6-1一个好玩的东西playGround" class="headerlink" title="xcode6.1一个好玩的东西playGround"></a>xcode6.1一个好玩的东西playGround</h4><p>为什么说它好玩呢，因为他可以把swift在没有编译的情况下，显示出每行代码的结果，其实就是预览功能了。强大无比。</p>
-<p>####hello word</p>
-<pre><code>print(&quot;hello word&quot;)
-</code></pre><p>####变量</p>
-<pre><code>var address = &quot;北京&quot;
-</code></pre><p>####常量定义</p>
-<pre><code>let name = &quot;Jim&quot;
+        <h2 id="Swift编程语言学习"><a href="#Swift编程语言学习" class="headerlink" title="Swift编程语言学习"></a>Swift编程语言学习</h2><h4 id="xcode6-1一个好玩的东西playGround"><a href="#xcode6-1一个好玩的东西playGround" class="headerlink" title="xcode6.1一个好玩的东西playGround"></a>xcode6.1一个好玩的东西playGround</h4><p>为什么说它好玩呢，因为他可以把swift在没有编译的情况下，显示出每行代码的结果，其实就是预览功能了。强大无比。</p>
+<h4 id="hello-word"><a href="#hello-word" class="headerlink" title="hello word"></a>hello word</h4><pre><code>print(&quot;hello word&quot;)
+</code></pre><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><pre><code>var address = &quot;北京&quot;
+</code></pre><h4 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h4><pre><code>let name = &quot;Jim&quot;
 
 let age = 18
-</code></pre><p>####强制类型转换，</p>
-<pre><code>let nameAndAge = name + &quot;:&quot; + String(age)
+</code></pre><h4 id="强制类型转换，"><a href="#强制类型转换，" class="headerlink" title="强制类型转换，"></a>强制类型转换，</h4><pre><code>let nameAndAge = name + &quot;:&quot; + String(age)
 
 
 let apples = 18
@@ -97,12 +92,10 @@ let oranges = 20
 <pre><code>let applesSummary = &quot;i hava \(apples) apples&quot;
 
 let orangesSummary = &quot;i have \(oranges) oranges&quot;
-</code></pre><p>####创建数组</p>
-<pre><code>var names = [1,2,3,4,5]
+</code></pre><h4 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h4><pre><code>var names = [1,2,3,4,5]
 
 names[1]
-</code></pre><p>####创建字典</p>
-<pre><code>var tabales = [
+</code></pre><h4 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h4><pre><code>var tabales = [
     //scale
     &quot;name&quot; : &quot;夏明&quot;,
     &quot;age&quot; : &quot;15&quot;,
@@ -169,20 +162,17 @@ switch vegetable{
     let vegetableComment = &quot;Verything tastes good in soup.&quot;
 
 }
-</code></pre><p>####函数声明</p>
-<pre><code>func sayContent(name:String,age:Int) -&gt; String{
+</code></pre><h4 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h4><pre><code>func sayContent(name:String,age:Int) -&gt; String{
 
     return &quot;I am \(name),My age is\(age)&quot;
 }
 sayContent(&quot;Jim&quot;, 18)
-</code></pre><p>#####返回多个函数 利用元组</p>
-<pre><code>func getManyResults(name:String,age:Int,address:String) -&gt; (String,Int,String){
+</code></pre><h5 id="返回多个函数-利用元组"><a href="#返回多个函数-利用元组" class="headerlink" title="返回多个函数 利用元组"></a>返回多个函数 利用元组</h5><pre><code>func getManyResults(name:String,age:Int,address:String) -&gt; (String,Int,String){
     return (name,age,address)
 }
 
 getManyResults(&quot;小明&quot;, 18, &quot;长安大街&quot;)
-</code></pre><p>#####函数可变参数</p>
-<pre><code>func addNNums(arrays:Int ...) -&gt;Int{
+</code></pre><h5 id="函数可变参数"><a href="#函数可变参数" class="headerlink" title="函数可变参数"></a>函数可变参数</h5><pre><code>func addNNums(arrays:Int ...) -&gt;Int{
     var sum = 0
 
     for n in arrays{
@@ -203,8 +193,7 @@ addNNums(1,2,3,4)
     return y
 }
 returnResult()
-</code></pre><p>#####闭包 ： 闭合并包裹 </p>
-<pre><code>var strs = [&quot;1110&quot;,&quot;2&quot;,&quot;14&quot;,&quot;115&quot;]
+</code></pre><h5 id="闭包-：-闭合并包裹"><a href="#闭包-：-闭合并包裹" class="headerlink" title="闭包 ： 闭合并包裹"></a>闭包 ： 闭合并包裹</h5><pre><code>var strs = [&quot;1110&quot;,&quot;2&quot;,&quot;14&quot;,&quot;115&quot;]
 func whoIsBiger(s1: String, s2: String) -&gt; Bool {
 
     return s1 &gt; s2;
@@ -248,8 +237,7 @@ func lessThenTen(num : Int) -&gt; Bool{
 var bs = [1,23,4,5]
 
 hasManyMatch(bs,lessThenTen)
-</code></pre><p>####创建一个类</p>
-<p>//普通的类，没有构造函数，所有的用到的 属性必须初始化</p>
+</code></pre><h4 id="创建一个类"><a href="#创建一个类" class="headerlink" title="创建一个类"></a>创建一个类</h4><p>//普通的类，没有构造函数，所有的用到的 属性必须初始化</p>
 <pre><code>class Animal{
 
 var hair : String = &quot;黄色&quot;
@@ -277,8 +265,7 @@ func sayHello(){
 </code></pre><p>//在创建对象的时候，构造函数的参数必须显示的显示出参数的名字</p>
 <pre><code>var peo = People(name: &quot;ming&quot;,age: 18)
 peo.sayHello()
-</code></pre><p>####继承</p>
-<pre><code>class Teacher : People {
+</code></pre><h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><pre><code>class Teacher : People {
 
 var work:String
 
@@ -300,8 +287,7 @@ var teacher = Teacher(work: &quot;Teacher&quot;, name: &quot;Ming&quot;, age: 35
 
 teacher.sayHello()
 teacher.writeToTop(&quot;扫地&quot;)
-</code></pre><p>####枚举</p>
-<pre><code>enum Suit{
+</code></pre><h4 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h4><pre><code>enum Suit{
 
    case Spades,Hearts,Diamonds,Clubs
 
@@ -331,8 +317,7 @@ func color() -&gt; String{
     }
 }
 </code></pre><p>}</p>
-<p>####结构体</p>
-<pre><code>struct Card {
+<h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><pre><code>struct Card {
 var rank: Rank
 var suit: Suit
 
@@ -344,16 +329,14 @@ func simpaleDescription() -&gt; String{
 
 let card = Card(rank: Rank.Three, suit: Suit.Spades)
 var result = card.simpaleDescription()
-</code></pre><p>####枚举、结构体类的区别</p>
-<p>类：在传递过程中传递的时引用<br>结构体和枚举：在传递过程中传递的是值，也就是一个值的副本</p>
-<p>####例子：<br> Ios用swift开发的TodoList和Weather（基站定位，联网刷新，JSON解析）<a href="https://github.com/ccpy/swiftnote" target="_blank" rel="external">点击查看项目代码</a></p>
-<p>#####总结</p>
-<p>感觉swift语法很爽</p>
+</code></pre><h4 id="枚举、结构体类的区别"><a href="#枚举、结构体类的区别" class="headerlink" title="枚举、结构体类的区别"></a>枚举、结构体类的区别</h4><p>类：在传递过程中传递的时引用<br>结构体和枚举：在传递过程中传递的是值，也就是一个值的副本</p>
+<h4 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h4><p> Ios用swift开发的TodoList和Weather（基站定位，联网刷新，JSON解析）<a href="https://github.com/ccpy/swiftnote" target="_blank" rel="external">点击查看项目代码</a></p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>感觉swift语法很爽</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/12/15/swift编程语言学习/" data-id="cis7casx50010p7jxflr107c1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/12/15/swift编程语言学习/" data-id="cis7cnqys0011mhjx4jq2p7ns" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li></ul>
