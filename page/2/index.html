@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="bogou">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="bogou">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bogou">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-andoridPreference" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/05/12/andoridPreference/">andorid设置界面的框架，Preference Screens用法。</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-05-11T16:00:00.000Z" itemprop="datePublished">05-12-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###andorid Preference Screens的用法，及注意事项。</p>
+<p>#####PreferenceScreen首选项的资源定义：</p>
+<pre><code>在项目res/xml文件夹下创建。
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;PreferenceScreen xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+        .....
+    &lt;PreferenceCategory&gt;
+        .....
+        &lt;!-- 这是对设置界面的分类。--&gt;
+    &lt;/PreferenceCategory&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre><blockquote>
+<p>在定义设置界面的组件的时候，有几个属性是应该指定的。title、key、summary、defaultValue.从字面上，也可以看出，这是指定组件的什么属性的，不再累赘。而控件的类别，也是分很多种：CheckBoxPreference、EditTextPreference、ListPreference、MultiScreenListPreference、RingtonePreference。哎呀这些官网上都有。罗嗦了。。</p>
+<p>#####PreferenceHeader资源定义</p>
+<p>PreferenceHeader资源是对Preference Fragment在Preference Activity中是怎样分组显示的。简单的理解为是对设置选项的分类而已。但是，Preference Header对不同屏幕做了适应。在平板和小屏的设备上显示的是不同的。</p>
+</blockquote>
+<pre><code>&lt;preference-headers xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;header android:fragment=&quot;com.cpy.newwork.MyPreference&quot;
+        android:icon=&quot;@drawable/ic_launcher&quot;
+        android:title=&quot;header_title&quot;
+        android:summary=&quot;header_summary&quot;
+        &gt;
+    &lt;/header&gt;
+&lt;/preference-headers&gt;
+</code></pre><p>###Preference Activity 和Preference Fragment</p>
+<blockquote>
+<p>在android(3.0)，API=11时，首选项框架做了很大的修改，增加了Preference Fragment 和 Preference Header的概念，现在这是创建首选项的首选技术。而今天主要是介绍Preference Fragment的应用，和如何兼容3.0以前的android版本。在3.0以前的版本中，主要是用Preference Activity来对设置界面的加载。而3.0的诞生，主要是针对平板、或者大屏做了很多的设计。且Fragment就是其中之一了。所以Preference Fragment的诞生也是理所当然的。在3.0加载设置界面xml文件的时候，直接是其继承PreferenceFragment，重写onCreate的方法，并调用addPreferencesFromResource(R.xml.preferencescreen)方法。</p>
+</blockquote>
+<pre><code>public class MyPreference extends PreferenceFragment {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //加载动作
+        addPreferencesFromResource(R.xml.preferencescreen);
+    }
+}
+</code></pre><blockquote>
+<p>Preference Activity是正常的Activity，就是继承了一个PreferenceActivity而已，且在加载资源的时候。重新它的onBuildHeaders方法。这是在3.0以前的设备上经常用的首选项的框架。</p>
+</blockquote>
+<pre><code>public class MyPrefeActivity extends PreferenceActivity{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.perfe_main);
+
+        if (savedInstanceState == null) {
+
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @Override
+    public void onBuildHeaders(List&lt;Header&gt; target) {
+        super.onBuildHeaders(target);
+        loadHeadersFromResource(R.xml.preferenceheader,target);
+    }
+}
+</code></pre><blockquote>
+<p>如果想要做向后兼容的app首选项。可以用分别去实现Preference Activity 和Preference Fragment，利用以下代码获得其引用。</p>
+</blockquote>
+<pre><code>Class c = Build.VERSION.SDK_INT &lt; Build.VERSION_CODES.HONEYCOMB ? MyPrefeActivity.class : MyPreferenceFragment.class;
+Intent i = new Intent(this , c);
+startActivityForResult(i,1);
+</code></pre><blockquote>
+<p>框架保存的设置的SharedPreference是存在应用程序的沙箱中，这样能使其他的组件很舒服的得到它和修改它。获取代码如下：</p>
+</blockquote>
+<pre><code>Context cc = getApplicationContext();
+SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(cc);
+</code></pre><p>哎呦肚子疼了，上厕所去了。。。。拜拜 祝生活愉快。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/12/andoridPreference/" data-id="cis7caswq0007p7jxku0b8ul4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javaIO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/03/13/javaIO/">JAVAIO操作梳理。</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-03-12T16:00:00.000Z" itemprop="datePublished">03-13-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##java IO的梳理</p>
+<p>自己记录的理解。因为java的IO太复杂，所以他的功能也很强大。扎实的理解java的IO还是很重要的。今天在这里做下笔记。提升自己的理解。</p>
+<p>###字节流</p>
+<blockquote>
+<p>流的概念。java会把数据读取到内存中，而内存中的数据就是一个“流”。</p>
+<p>字节流：根据输入和输出划分，有InputStream 和 OutputStream,这两个都是抽象类。不能被实例化。</p>
+</blockquote>
+<p>分别的主要子类有</p>
+<pre><code>1.InputStream                                               
+↓                                                                                     
+|--FileInputStream (最经常用的)                                
+|--PipedInputStream    管道输入流应该连接到管道输出流；管道输入流提供要写入管道输出流的所有数据字节。
+通常，数据由某个线程从 PipedInputStream 对象读取，并由其他线程将其写入到相应的 PipedOutputStream。
+不建议对这两个对象尝试使用单个线程，因为这样可能死锁线程。管道输入流包含一个缓冲区，可在缓冲区限定的
+范围内将读操作和写操作分离开。如果向连接管道输出流提供数据字节的线程不再存在，则认为该管道已损坏。 
+
+
+|--SequenceInputStream 合并的流 
+|--FilterInputStream 过滤流
+   |--DataInputStream(读取基本 Java 数据类型。)    
+   |--BufferedInputStream 缓冲输入 添加mark reset方法
+
+2.OutputStream
+↓
+|--FileOutputStream(最经常用的)
+|--PipedOutputStream 管道输出流连接到管道输入流来创建通信管道
+|--ByteArrayOutputStream 此类实现了一个输出流，其中的数据被写入一个 byte 数组
+|--FilterOutputStream
+   |--BufferedOutputStream 类实现缓冲的输出流。通过设置这种输出流，应用程序就可以将各个字节写入底层输出流中，
+    而不必针对每次字节写入调用底层系统
+   |--DataOutputStream 数据输出流允许应用程序以适当方式将基本 Java 数据类型写入输出流中
+</code></pre><p>###字符流    </p>
+<blockquote>
+<p>字符流：根据输入输出划分，Reader 和 Writer 同样这两个也是抽象类。不能被实例化。</p>
+</blockquote>
+<p>主要子类：</p>
+<pre><code>1.Reader                                                  
+↓                                                          
+|--BufferedReader（缓冲各个字符，提高效率的包装类）    --readLine()方法                      
+|--InputStreamReader(字节流转向字符流的桥梁)
+   |--FileReader （读取字符的便捷类）                       
+|--StringReader(字符串流)    
+
+
+
+2.Writer
+↓
+|--BufferedWriter（提高效率的）
+|--OutputStreamWriter 是字符流通向字节流的桥梁
+   |--FileWriter 用来写入字符文件的便捷类
+|--StringWriter(字符串流)    
+|--PrintWriter （格式化输出）
+</code></pre><p>###java的进程控制</p>
+<p>Process java的进程类</p>
+<p>可以通过ProcessBuilder.start() 和 Runtime.exec 方法创建一个本机进程，并返回 Process 子类的一个实例</p>
+<pre><code>构造方法：
+ProcessBuilder(List&lt;String&gt; command) 
+      （指定操作系统程序，传命令）
+ProcessBuilder(String... command) 
+          传入一个命令
+</code></pre><p>可以利用此类跟所用的系统实现交互。</p>
+<pre><code>public static void TestProcess() throws IOException{
+    ProcessBuilder pb = new ProcessBuilder(&quot;mount&quot;);
+
+    Process pro = pb.start();
+
+    InputStream in = pro.getInputStream();
+    InputStreamReader isr = new InputStreamReader(in);
+    BufferedReader br = new BufferedReader(isr);
+    String s = null;
+    while((s = br.readLine()) != null){
+        //readLine不读取行的换行符，so用println
+        System.out.println(s);
+    }
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/03/13/javaIO/" data-id="cis7casx1000op7jxocjsku54" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-IO/">Java IO</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-androidActionBarmenu菜单无法显示的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/03/11/androidActionBarmenu菜单无法显示的问题/">android开发之actionbar无法显示overflow menu的解决办法</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-03-10T16:00:00.000Z" itemprop="datePublished">03-11-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###android开发之actionbar无法显示overflow menu的解决办法</p>
+<p>今天在开发actionbar的时候，遇到一个奇葩的问题~，就是按照官方的文档创建actionbar的时候。在设置溢出菜单选项的时候，不管我上面有多少菜单项，都无法溢出，最多就是显示出来几个，在网上找了好久，也没有找到好的办法，后来在群里询问，有的人说是因为我设置的showAsAction属性有错误，我设置的是ifRoom|withText，然而我按照他说的改成了never，也是不行。最后不得不去认真的看官方文档，官方文档解释是这样的：</p>
+<blockquote>
+<p>The action overflow in the action bar provides access to your app’s less frequently used actions. The overflow icon only appears on phones that have no menu hardware keys. Phones with menu keys display the action overflow when the user presses the key.<a href="http://developer.android.com/design/patterns/actionbar.html#considerations-split-action-bars" target="_blank" rel="external">点击链接</a></p>
+<p>大概意思就是：溢出菜单里面存放些不常用的功能选项，溢出菜单图标只出现在手机硬件没有菜单键的设备上，当用户按下溢出菜单后，溢出菜单会显示出存放的功能选项。</p>
+</blockquote>
+<p>最后找到原因：如果手机上有menu的物理按键，或者虚拟按键的时候，actionbar的overflow menu 默认是不会显示的解决办法是：</p>
+<pre><code>private void forceShowActionBarOverflowMenu() {
+    try {
+        ViewConfiguration config = ViewConfiguration.get(this);
+        Field menuKeyField = ViewConfiguration.class.getDeclaredField(&quot;sHasPermanentMenuKey&quot;);
+        if (menuKeyField != null) {
+            menuKeyField.setAccessible(true);
+            menuKeyField.setBoolean(config, false);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+</code></pre><p>截取上面代码就在onCreate方法中调用，就可以解决overflow menu不显示的问题。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/03/11/androidActionBarmenu菜单无法显示的问题/" data-id="cis7caswr000ap7jxyr5o1v4t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ActionBar/">ActionBar</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-adb命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2013/12/12/adb命令/">ADB(Android Debug Bridge)的命令记录。</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2013-12-11T16:00:00.000Z" itemprop="datePublished">12-12-2013</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###由于在写刷机脚本的时候，经常用到各种adb命令。在此记下记录，如有不足，欢迎补充。<br>       adb shell am start -n 包名/包名+类名（-n 类名,-a action,-d date,-c category,-e 扩展数据）</p>
+<p>做过android的都知道在启动Activity，或者是broadcast、service时候可以通过Intent启动。在intent启动的时可以根据实际的需求，向Activity传入需要的参数，在此呢，adb shell启动的时候，就可以设定参数去启动了。</p>
+<ul>
+<li>n 参数是设置启动的目标Activity</li>
+<li>a 设置启动Activity的action，</li>
+<li>d 设置intent的data的参数，</li>
+<li>c 设定intent的category参数</li>
+<li><p>e为intent的extras</p>
+<pre><code>adb push [目标文件] [目标位置] 拷贝文件
+
+adb install [目标文件] 安装apk文件
+
+adb uninstall [目标文件] 卸载安装的应用```
+
+adb device 得到设备的信息
+
+adb wait-for-device 等待设备
+
+adb start-server/kill-server 启动adb服务/停止adb服务
+
+adb shell 进入shell环境
+
+adb get-state 打印出当前设备的状态
+
+adb forward &lt;local&gt; &lt;remote&gt; 发送套接字从本地接口到远端接口
+
+adb help 打印出adb所支持的所有命令
+</code></pre></li>
+</ul>
+<p>其他的一些大多数的都是linux的基本命令了。像cat，ls，mount，unmount，echo，ps 可以自行查阅。<br>参考资料：<a href="http://developer.android.com/tools/help/adb.html" target="_blank" rel="external">adb 详情参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/12/12/adb命令/" data-id="cis7caswm0004p7jxydjruf02" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-安装pythonmysqldb遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2013/11/22/安装pythonmysqldb遇到的问题/">windows下安装python mysqldb</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2013-11-22T09:11:54.000Z" itemprop="datePublished">11-22-2013</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##在windows下安装python mysqldb</p>
+<p>在windows下安装mysqldb，直接选择相应的版本，双击进行安装即可。<a href="http://www.codegood.com/downloads" target="_blank" rel="external">点击下载</a></p>
+<p>####python包管理整理</p>
+<p>在python开发中经常用到的一个工具，pip，在网上搜这方面的知识，会有一大堆。在此不在累赘。在*unix下安装python的pip会很容易安装，在windows下，就要用到一个脚本去安装。<a href="https://bootstrap.pypa.io/ez_setup.py" target="_blank" rel="external">点击下载</a>,这个是安装easy_install 的。然后可以用easy_install去安装pip工具</p>
+<p>####python的虚拟环境</p>
+<p>python开发的时候，经常会有N多的三方库，这就造成了python环境的混乱，和臃肿。所以，在这里我们用virtualenv去创建项目的工作的python环境。用Virtualenvwrapper去管理python的虚拟环境</p>
+<p>1.创建一个虚拟环境</p>
+<pre><code>virtualenv env1 
+</code></pre><p>2.然后进到虚拟环境中去用pip安装所需的三方库，</p>
+<pre><code>pip install [第三方库]
+</code></pre><p>3.所有的虚拟环境，互不干扰</p>
+<p>####python的requirements</p>
+<p>1.生成requirements.txt文件</p>
+<pre><code>pip freeze &gt; requirements.txt
+</code></pre><p>2.用requirements.txt文件下载项目所依赖的三方库</p>
+<pre><code>pip install -r requirements.txt
+</code></pre><p>####python + pychram + django快速开发方案</p>
+<p>配置django设置。</p>
+<p>1.files-&gt; setting -&gt; django support </p>
+<p>2.然后选择项目目录。再选择setting文件，最后选择manage.py文件。</p>
+<p>3.Ctrl + Alt + R 选择要执行的manage.py的命令</p>
+<p>####python+django练习</p>
+<p>这是我在学习python的时候，做的一个博客。已经支持代码高亮，前端界面用的是一些css库。整个的blog的内容很简洁，支持markdown编辑文件，后台管理直接用的三方库，来支持markdon输入，评论系统用的国内的多说网，在这里感谢多少网的支持，由于本人前段技术有限，所以，以后会逐渐的加入新功能，譬如：文章分类，文章标签等功能。</p>
+<p><img src="http://ccpy.qiniudn.com/test.jpg" alt="图片"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/11/22/安装pythonmysqldb遇到的问题/" data-id="cis7casx70013p7jx4hkhxtq7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+  
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Swift学习。 | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前几天刚入手了mac pro ，体验不要太屌。第一件事当然是下载Xcode了。在苹果公司推出新语言的第一天就跟同事讨论了，当时只是简单的看了一下语法结构，现在有条件了当然要实现一下了。come on！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习。">
+<meta property="og:url" content="http://yoursite.com/2014/12/15/swift编程语言学习/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="前几天刚入手了mac pro ，体验不要太屌。第一件事当然是下载Xcode了。在苹果公司推出新语言的第一天就跟同事讨论了，当时只是简单的看了一下语法结构，现在有条件了当然要实现一下了。come on！">
+<meta property="og:updated_time" content="2016-08-23T10:26:32.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift学习。">
+<meta name="twitter:description" content="前几天刚入手了mac pro ，体验不要太屌。第一件事当然是下载Xcode了。在苹果公司推出新语言的第一天就跟同事讨论了，当时只是简单的看了一下语法结构，现在有条件了当然要实现一下了。come on！">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-swift编程语言学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift学习。
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-12-14T16:00:00.000Z" itemprop="datePublished">12-15-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程语言/">编程语言</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Swift编程语言学习</p>
+<h4 id="xcode6-1一个好玩的东西playGround"><a href="#xcode6-1一个好玩的东西playGround" class="headerlink" title="xcode6.1一个好玩的东西playGround"></a>xcode6.1一个好玩的东西playGround</h4><p>为什么说它好玩呢，因为他可以把swift在没有编译的情况下，显示出每行代码的结果，其实就是预览功能了。强大无比。</p>
+<p>####hello word</p>
+<pre><code>print(&quot;hello word&quot;)
+</code></pre><p>####变量</p>
+<pre><code>var address = &quot;北京&quot;
+</code></pre><p>####常量定义</p>
+<pre><code>let name = &quot;Jim&quot;
+
+let age = 18
+</code></pre><p>####强制类型转换，</p>
+<pre><code>let nameAndAge = name + &quot;:&quot; + String(age)
+
+
+let apples = 18
+
+let oranges = 20
+</code></pre><p>// “/（）”这样就可以读取变量的值，加在字符串中</p>
+<pre><code>let applesSummary = &quot;i hava \(apples) apples&quot;
+
+let orangesSummary = &quot;i have \(oranges) oranges&quot;
+</code></pre><p>####创建数组</p>
+<pre><code>var names = [1,2,3,4,5]
+
+names[1]
+</code></pre><p>####创建字典</p>
+<pre><code>var tabales = [
+    //scale
+    &quot;name&quot; : &quot;夏明&quot;,
+    &quot;age&quot; : &quot;15&quot;,
+]
+</code></pre><p>//向map中添加元素</p>
+<pre><code>tabales[&quot;address&quot;] = &quot;北京&quot;
+
+tabales[&quot;address&quot;]
+</code></pre><p>//创建空得map或者arrys</p>
+<pre><code>var arrys=[String]()
+
+var emptyMaps=[String:Int]()
+
+
+var nums = []
+
+var maps = [:]
+
+var tempScore = 0
+
+for score in names{
+    if score &gt; 2{
+        tempScore += 5;
+    }else{
+        tempScore += 1;
+    }
+}
+
+tempScore
+
+//在swift中 nil就是false
+
+var optionalString : String? = &quot;hello&quot;
+
+optionalString == nil
+
+var optionName:String? = &quot;Caopy&quot;
+
+//optionName = nil
+
+var greeting = &quot;hello!&quot;
+
+if let myName = optionName {
+    greeting = &quot;hello, \(optionName)  &quot;
+}
+
+
+let vegetable = &quot;red paper&quot;
+
+switch vegetable{
+    case &quot;celery&quot;:
+
+    let vegetableComment​ = &quot;Add some raisins and make ants on a log.&quot;
+
+    case &quot;cucumber&quot; , &quot;watercress&quot;:
+
+                    let vegetableComment = &quot;That would make a good teasandich&quot;;
+
+    case let x where x.hasSuffix(&quot;paper&quot;) :
+
+        let vegetableComment = &quot;is it a spice \(x)?&quot;;
+
+       default:
+    let vegetableComment = &quot;Verything tastes good in soup.&quot;
+
+}
+</code></pre><p>####函数声明</p>
+<pre><code>func sayContent(name:String,age:Int) -&gt; String{
+
+    return &quot;I am \(name),My age is\(age)&quot;
+}
+sayContent(&quot;Jim&quot;, 18)
+</code></pre><p>#####返回多个函数 利用元组</p>
+<pre><code>func getManyResults(name:String,age:Int,address:String) -&gt; (String,Int,String){
+    return (name,age,address)
+}
+
+getManyResults(&quot;小明&quot;, 18, &quot;长安大街&quot;)
+</code></pre><p>#####函数可变参数</p>
+<pre><code>func addNNums(arrays:Int ...) -&gt;Int{
+    var sum = 0
+
+    for n in arrays{
+        sum += n;
+    }
+    return sum
+}
+addNNums()
+
+addNNums(1,2,3,4)
+</code></pre><p>#####嵌套函数</p>
+<pre><code>func returnResult() -&gt; Int{
+    var y = 10;
+    func add(){
+        y += 5
+        }
+    add()
+    return y
+}
+returnResult()
+</code></pre><p>#####闭包 ： 闭合并包裹 </p>
+<pre><code>var strs = [&quot;1110&quot;,&quot;2&quot;,&quot;14&quot;,&quot;115&quot;]
+func whoIsBiger(s1: String, s2: String) -&gt; Bool {
+
+    return s1 &gt; s2;
+
+}
+var reverds = sorted(strs , whoIsBiger)
+</code></pre><p>//swift的闭包语法 </p>
+<p>//   {(s1: String,s2: String) -&gt; String in  return s1 &gt; s2   }</p>
+<pre><code>sorted(strs,{(s1:String,s2:String) -&gt; Bool in return s1 &gt; s2})
+</code></pre><p>//swift 自动类型推断 可以简化成这样</p>
+<pre><code>sorted(strs, { s1 ,s2 in return s1 &gt; s2})
+</code></pre><p>//单表达式 闭包还可以省略 return 关键字</p>
+<pre><code>sorted(strs,{s1 , s2 in s1 &gt; s2})
+</code></pre><p>//函数作为返回值,(Int -&gt; Int) 说明返回的函数 参数是Int 返回结果也是Int<br>//ps 注意返回的函数只返回函数的名字，不包括（）</p>
+<pre><code>func makeIncrementer() -&gt;(Int -&gt; Int){
+
+    func addOnce(x : Int) -&gt; Int{
+        return x + 1
+    }
+    return addOnce
+}
+
+var addOne = makeIncrementer()
+
+addOne(5)
+</code></pre><p>//函数当做个参传进另一个函数</p>
+<pre><code>func hasManyMatch(nums:[Int],condition : Int -&gt; Bool) -&gt; Bool{
+
+for n in nums {
+    if condition(n){
+        return true
+    }
+}
+return false
+}
+
+func lessThenTen(num : Int) -&gt; Bool{
+        return num &lt; 10
+}
+
+var bs = [1,23,4,5]
+
+hasManyMatch(bs,lessThenTen)
+</code></pre><p>####创建一个类</p>
+<p>//普通的类，没有构造函数，所有的用到的 属性必须初始化</p>
+<pre><code>class Animal{
+
+var hair : String = &quot;黄色&quot;
+var name : String = &quot;老虎&quot;
+
+func speckEnglish() -&gt; String{
+    return &quot;I am a \(name),and My hiar is \(hair)&quot;
+}
+}
+</code></pre><p>//包含构造函数的类，熟悉可以初始化，也可以不初始化</p>
+<pre><code>class People {
+var name:String
+
+var age : Int
+
+init(name:String,age:Int){
+    self.name = name
+    self.age = age
+}
+
+func sayHello(){
+    print(&quot;My name is \(name),and my age is \(age)&quot;)
+}
+}
+</code></pre><p>//在创建对象的时候，构造函数的参数必须显示的显示出参数的名字</p>
+<pre><code>var peo = People(name: &quot;ming&quot;,age: 18)
+peo.sayHello()
+</code></pre><p>####继承</p>
+<pre><code>class Teacher : People {
+
+var work:String
+
+init(work : String, name : String, age : Int){
+    self.work = work
+    super.init(name: name, age: age)
+}
+
+func writeToTop(content:String){
+    print(&quot;I am doing work \(content)&quot; )
+}
+override func sayHello() {
+    super.sayHello()
+    print(&quot;,and My work is an\(work)&quot;)
+}
+}
+
+var teacher = Teacher(work: &quot;Teacher&quot;, name: &quot;Ming&quot;, age: 35)
+
+teacher.sayHello()
+teacher.writeToTop(&quot;扫地&quot;)
+</code></pre><p>####枚举</p>
+<pre><code>enum Suit{
+
+   case Spades,Hearts,Diamonds,Clubs
+
+func simpaleDescrition() -&gt; String{
+    switch self{
+    case .Spades:
+        return &quot;spades&quot;
+    case .Hearts:
+        return &quot;hearts&quot;
+    case .Diamonds:
+        return &quot;diamonds&quot;
+    case .Clubs:
+        return &quot;clubs&quot;
+    }
+}
+
+func color() -&gt; String{
+    switch self{
+    case .Spades:
+        return &quot;black&quot;
+    case .Hearts:
+        return &quot;black&quot;
+    case .Diamonds:
+        return &quot;red&quot;
+    case .Clubs:
+        return &quot;red&quot;
+    }
+}
+</code></pre><p>}</p>
+<p>####结构体</p>
+<pre><code>struct Card {
+var rank: Rank
+var suit: Suit
+
+func simpaleDescription() -&gt; String{
+    return &quot;The \(rank.simpleDescription()) of \(suit.simpaleDescrition())&quot;
+}
+
+}
+
+let card = Card(rank: Rank.Three, suit: Suit.Spades)
+var result = card.simpaleDescription()
+</code></pre><p>####枚举、结构体类的区别</p>
+<p>类：在传递过程中传递的时引用<br>结构体和枚举：在传递过程中传递的是值，也就是一个值的副本</p>
+<p>####例子：<br> Ios用swift开发的TodoList和Weather（基站定位，联网刷新，JSON解析）<a href="https://github.com/ccpy/swiftnote" target="_blank" rel="external">点击查看项目代码</a></p>
+<p>#####总结</p>
+<p>感觉swift语法很爽</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/15/swift编程语言学习/" data-id="cis7casx50010p7jxflr107c1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/23/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/20/Auxer制作原型图，在手机里浏览/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Auxer原型在手机上访问，用Tomcat当做服务器。</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

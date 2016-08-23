@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>andorid设置界面的框架，Preference Screens用法。 | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="andorid设置界面的框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="andorid设置界面的框架，Preference Screens用法。">
+<meta property="og:url" content="http://yoursite.com/2014/05/12/andoridPreference/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="andorid设置界面的框架">
+<meta property="og:updated_time" content="2016-08-23T10:25:44.580Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="andorid设置界面的框架，Preference Screens用法。">
+<meta name="twitter:description" content="andorid设置界面的框架">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-andoridPreference" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      andorid设置界面的框架，Preference Screens用法。
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-05-11T16:00:00.000Z" itemprop="datePublished">05-12-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###andorid Preference Screens的用法，及注意事项。</p>
+<p>#####PreferenceScreen首选项的资源定义：</p>
+<pre><code>在项目res/xml文件夹下创建。
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;PreferenceScreen xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+        .....
+    &lt;PreferenceCategory&gt;
+        .....
+        &lt;!-- 这是对设置界面的分类。--&gt;
+    &lt;/PreferenceCategory&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre><blockquote>
+<p>在定义设置界面的组件的时候，有几个属性是应该指定的。title、key、summary、defaultValue.从字面上，也可以看出，这是指定组件的什么属性的，不再累赘。而控件的类别，也是分很多种：CheckBoxPreference、EditTextPreference、ListPreference、MultiScreenListPreference、RingtonePreference。哎呀这些官网上都有。罗嗦了。。</p>
+<p>#####PreferenceHeader资源定义</p>
+<p>PreferenceHeader资源是对Preference Fragment在Preference Activity中是怎样分组显示的。简单的理解为是对设置选项的分类而已。但是，Preference Header对不同屏幕做了适应。在平板和小屏的设备上显示的是不同的。</p>
+</blockquote>
+<pre><code>&lt;preference-headers xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;header android:fragment=&quot;com.cpy.newwork.MyPreference&quot;
+        android:icon=&quot;@drawable/ic_launcher&quot;
+        android:title=&quot;header_title&quot;
+        android:summary=&quot;header_summary&quot;
+        &gt;
+    &lt;/header&gt;
+&lt;/preference-headers&gt;
+</code></pre><p>###Preference Activity 和Preference Fragment</p>
+<blockquote>
+<p>在android(3.0)，API=11时，首选项框架做了很大的修改，增加了Preference Fragment 和 Preference Header的概念，现在这是创建首选项的首选技术。而今天主要是介绍Preference Fragment的应用，和如何兼容3.0以前的android版本。在3.0以前的版本中，主要是用Preference Activity来对设置界面的加载。而3.0的诞生，主要是针对平板、或者大屏做了很多的设计。且Fragment就是其中之一了。所以Preference Fragment的诞生也是理所当然的。在3.0加载设置界面xml文件的时候，直接是其继承PreferenceFragment，重写onCreate的方法，并调用addPreferencesFromResource(R.xml.preferencescreen)方法。</p>
+</blockquote>
+<pre><code>public class MyPreference extends PreferenceFragment {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //加载动作
+        addPreferencesFromResource(R.xml.preferencescreen);
+    }
+}
+</code></pre><blockquote>
+<p>Preference Activity是正常的Activity，就是继承了一个PreferenceActivity而已，且在加载资源的时候。重新它的onBuildHeaders方法。这是在3.0以前的设备上经常用的首选项的框架。</p>
+</blockquote>
+<pre><code>public class MyPrefeActivity extends PreferenceActivity{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.perfe_main);
+
+        if (savedInstanceState == null) {
+
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @Override
+    public void onBuildHeaders(List&lt;Header&gt; target) {
+        super.onBuildHeaders(target);
+        loadHeadersFromResource(R.xml.preferenceheader,target);
+    }
+}
+</code></pre><blockquote>
+<p>如果想要做向后兼容的app首选项。可以用分别去实现Preference Activity 和Preference Fragment，利用以下代码获得其引用。</p>
+</blockquote>
+<pre><code>Class c = Build.VERSION.SDK_INT &lt; Build.VERSION_CODES.HONEYCOMB ? MyPrefeActivity.class : MyPreferenceFragment.class;
+Intent i = new Intent(this , c);
+startActivityForResult(i,1);
+</code></pre><blockquote>
+<p>框架保存的设置的SharedPreference是存在应用程序的沙箱中，这样能使其他的组件很舒服的得到它和修改它。获取代码如下：</p>
+</blockquote>
+<pre><code>Context cc = getApplicationContext();
+SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(cc);
+</code></pre><p>哎呦肚子疼了，上厕所去了。。。。拜拜 祝生活愉快。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/12/andoridPreference/" data-id="cis7caswq0007p7jxku0b8ul4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/05/20/android_listview图片异步加载，和图片错乱/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          解决Android ListView图片异步加载，和图片错乱
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/03/13/javaIO/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JAVAIO操作梳理。</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android屏幕适配问题 | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android屏幕适配。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android屏幕适配问题">
+<meta property="og:url" content="http://yoursite.com/2014/10/10/Android屏幕适配/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="Android屏幕适配。">
+<meta property="og:updated_time" content="2016-08-23T10:26:06.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android屏幕适配问题">
+<meta name="twitter:description" content="Android屏幕适配。">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android屏幕适配" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android屏幕适配问题
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-10-09T16:00:00.000Z" itemprop="datePublished">10-10-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="支持不同大小屏幕的适配"><a href="#支持不同大小屏幕的适配" class="headerlink" title="支持不同大小屏幕的适配"></a>支持不同大小屏幕的适配</h2><p>按照官方的说法主要是注意以下几点：</p>
+<ol>
+<li>布局中尽可能的用<code>warp_content</code>或者<code>match_parent</code>。</li>
+<li>你可以用<code>LinearLayout</code>嵌套布局并且结合<code>warp_content</code>或者<code>match_parent</code>来构造复杂的界面。但是<code>LinearLayout</code>不能精确的控制布局中的组件，如果你的视图变化不是成一条直线，那么尽可能的去用<code>RelativeLayout</code>。</li>
+<li>用Size限定符来适配屏幕，创建两个布局文件：<code>res/layout/main.xml</code>(single-pane layout)和<code>res/layout-large/main.xml</code>(two-pane layout)。注意这是在屏幕的大小上分类。例如：普通手机设备和7寸平板、AndroidTV的区别分类。</li>
+<li><p><code>Smallest-width</code> 限定符允许你的设备屏幕的dp在一个最小范围内。你可以根据自己适配的设备来确定你的布局是一个面板还是两个面板（Panel）。区别也是创建两个文件：<code>res/layout/main.xml</code>和<code>res/layout-sw600dp/main.xml</code>。这意味着设备的最小宽度大于或等于600 dp将选择<code>res/layout-sw600dp/main.xml</code>，而较小的屏幕将选择<code>res/layout/main.xml</code>的布局。（适用于Android3.2版本或者以上的版本）<br>5.别名限定符，当你要适配多种大小屏幕的时候。你会创建不同的布局文件来适配布局，例如：</p>
+<pre><code>- res/layout/main.xml: single-pane layout
+- res/layout-large: multi-pane layout
+- res/layout-sw600dp: multi-pane layout 
+</code></pre><p>其中large和sw600dp都是两个Panl来呈现内容和操作的。那么你就会创建两个同意的布局文件，为了避免这样的臃肿。就用到了别名限定符。</p>
+<p> 首先创建布局文件在layout的文件夹中：</p>
+<pre><code>-res/layout/main.xml, single-pane layout
+-res/layout/main_twopanes.xml, two-pane layout
+</code></pre><p> 然后在创建下面两个文件：</p>
+<pre><code>- res/values-large/layout.xml:
+    &lt;resources&gt;
+        &lt;item name=&quot;main&quot; type=&quot;layout&quot;&gt;@layout/main_twopanes&lt;/item&gt;
+    &lt;/resources&gt;
+
+- res/values-sw600dp/layout.xml:
+    &lt;resources&gt;
+        &lt;item name=&quot;main&quot; type=&quot;layout&quot;&gt;@layout/main_twopanes&lt;/item&gt;
+    &lt;/resources&gt;
+</code></pre><p> 这两个文件的作用就是把<code>main</code>定义成<code>main_twopanes</code>的别名，这两个文件会有选择功能，在App运行的时候，根据设备的情况，来加载布局。</p>
+</li>
+<li><p>屏幕方向的适配,1.创建屏幕大小和方向上用到的布局文件。2、创建别名。3、代码中引用具体可参考：<a href="https://developer.android.com/training/multiscreen/screensizes.html#TaskUseOriQuali" title="Android官方文档" target="_blank" rel="external">“Android官方文档”</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/10/10/Android屏幕适配/" data-id="cis7caswf0000p7jxqlr89s46" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android适配机型/">Android适配机型</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/20/Auxer制作原型图，在手机里浏览/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Auxer原型在手机上访问，用Tomcat当做服务器。
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/07/12/list、set、map/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android访问wcf时，结构性数据传递方法(List,Set,Map)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

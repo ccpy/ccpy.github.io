@@ -51,6 +51,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-android简洁架构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2016/08/23/android简洁架构/">Android简洁架构</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2016-08-23T10:39:24.052Z" itemprop="datePublished">08-23-2016</time>
+    
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#Android简洁架构</p>
+<p>###Android原生的开发</p>
+<blockquote>
+<p>都说Android在开发中，采用了MVC模式，但是在开发过程中，能感觉到整个Activity兼职于界面层，控制层。且Activity和界面层耦合度相当高，如果界面的空间要更改，整个Activity的实现要跟随着View层的改动而改动，这样的开发架构，实在是不够灵活，扩展性差，如果需求一改动基本上要不原来的实现再重新实现一遍，在开发过程中我感觉到Activity担任的职责太多，代码逻辑往往不是很清晰，于是就想找其他一种模式来代替Android原生的开发模式，能把Activity从混乱的结构中解脱出来。</p>
+</blockquote>
+<p>###MVP模式</p>
+<blockquote>
+<p>在github上国外的大神在架构上提出了MVP开发架构，类似于MVC开发模式，这里的字母分别指代为：M -&gt; Model,V -&gt; View, P -&gt; Presenter。这样的开发模式，可以把Activity从复杂的Control中截图出来，把所有的业务逻辑的控制，都在Presenter中处理，而Activity只是一个Presenter的持有者，在activity中初始化，且在Presenter中完成空间的监听事件，以及界面内容的渲染。Presenter中提供了所有的业务请求代码的入口。</p>
+</blockquote>
+<p>###MVP的进阶MVVM模式</p>
+<blockquote>
+<p>MVVM在微软的技术WPF中得到了广泛的应用，字母分别值：M-Model,V-View,VM-ViewModel。MVVM是由MVP演化过来的。模式很相似，你有一个View控件，分别要有一个对应的ViewModel，来绑定View上的所有控件。在WPF中支持双向绑定，和单向绑定。View的显示跟随ViewModel的绑定的值改变而改变。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/23/android简洁架构/" data-id="cis7caswu000cp7jx665kjvii" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
@@ -81,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/23/hello-world/" data-id="cis7bmqd10000sujx7oqu0eo1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/23/hello-world/" data-id="cis7casx0000mp7jxq7w5hzoy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -91,6 +135,1115 @@
 
 
   
+    <article id="post-swift编程语言学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/12/15/swift编程语言学习/">Swift学习。</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-12-14T16:00:00.000Z" itemprop="datePublished">12-15-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程语言/">编程语言</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Swift编程语言学习</p>
+<h4 id="xcode6-1一个好玩的东西playGround"><a href="#xcode6-1一个好玩的东西playGround" class="headerlink" title="xcode6.1一个好玩的东西playGround"></a>xcode6.1一个好玩的东西playGround</h4><p>为什么说它好玩呢，因为他可以把swift在没有编译的情况下，显示出每行代码的结果，其实就是预览功能了。强大无比。</p>
+<p>####hello word</p>
+<pre><code>print(&quot;hello word&quot;)
+</code></pre><p>####变量</p>
+<pre><code>var address = &quot;北京&quot;
+</code></pre><p>####常量定义</p>
+<pre><code>let name = &quot;Jim&quot;
+
+let age = 18
+</code></pre><p>####强制类型转换，</p>
+<pre><code>let nameAndAge = name + &quot;:&quot; + String(age)
+
+
+let apples = 18
+
+let oranges = 20
+</code></pre><p>// “/（）”这样就可以读取变量的值，加在字符串中</p>
+<pre><code>let applesSummary = &quot;i hava \(apples) apples&quot;
+
+let orangesSummary = &quot;i have \(oranges) oranges&quot;
+</code></pre><p>####创建数组</p>
+<pre><code>var names = [1,2,3,4,5]
+
+names[1]
+</code></pre><p>####创建字典</p>
+<pre><code>var tabales = [
+    //scale
+    &quot;name&quot; : &quot;夏明&quot;,
+    &quot;age&quot; : &quot;15&quot;,
+]
+</code></pre><p>//向map中添加元素</p>
+<pre><code>tabales[&quot;address&quot;] = &quot;北京&quot;
+
+tabales[&quot;address&quot;]
+</code></pre><p>//创建空得map或者arrys</p>
+<pre><code>var arrys=[String]()
+
+var emptyMaps=[String:Int]()
+
+
+var nums = []
+
+var maps = [:]
+
+var tempScore = 0
+
+for score in names{
+    if score &gt; 2{
+        tempScore += 5;
+    }else{
+        tempScore += 1;
+    }
+}
+
+tempScore
+
+//在swift中 nil就是false
+
+var optionalString : String? = &quot;hello&quot;
+
+optionalString == nil
+
+var optionName:String? = &quot;Caopy&quot;
+
+//optionName = nil
+
+var greeting = &quot;hello!&quot;
+
+if let myName = optionName {
+    greeting = &quot;hello, \(optionName)  &quot;
+}
+
+
+let vegetable = &quot;red paper&quot;
+
+switch vegetable{
+    case &quot;celery&quot;:
+
+    let vegetableComment​ = &quot;Add some raisins and make ants on a log.&quot;
+
+    case &quot;cucumber&quot; , &quot;watercress&quot;:
+
+                    let vegetableComment = &quot;That would make a good teasandich&quot;;
+
+    case let x where x.hasSuffix(&quot;paper&quot;) :
+
+        let vegetableComment = &quot;is it a spice \(x)?&quot;;
+
+       default:
+    let vegetableComment = &quot;Verything tastes good in soup.&quot;
+
+}
+</code></pre><p>####函数声明</p>
+<pre><code>func sayContent(name:String,age:Int) -&gt; String{
+
+    return &quot;I am \(name),My age is\(age)&quot;
+}
+sayContent(&quot;Jim&quot;, 18)
+</code></pre><p>#####返回多个函数 利用元组</p>
+<pre><code>func getManyResults(name:String,age:Int,address:String) -&gt; (String,Int,String){
+    return (name,age,address)
+}
+
+getManyResults(&quot;小明&quot;, 18, &quot;长安大街&quot;)
+</code></pre><p>#####函数可变参数</p>
+<pre><code>func addNNums(arrays:Int ...) -&gt;Int{
+    var sum = 0
+
+    for n in arrays{
+        sum += n;
+    }
+    return sum
+}
+addNNums()
+
+addNNums(1,2,3,4)
+</code></pre><p>#####嵌套函数</p>
+<pre><code>func returnResult() -&gt; Int{
+    var y = 10;
+    func add(){
+        y += 5
+        }
+    add()
+    return y
+}
+returnResult()
+</code></pre><p>#####闭包 ： 闭合并包裹 </p>
+<pre><code>var strs = [&quot;1110&quot;,&quot;2&quot;,&quot;14&quot;,&quot;115&quot;]
+func whoIsBiger(s1: String, s2: String) -&gt; Bool {
+
+    return s1 &gt; s2;
+
+}
+var reverds = sorted(strs , whoIsBiger)
+</code></pre><p>//swift的闭包语法 </p>
+<p>//   {(s1: String,s2: String) -&gt; String in  return s1 &gt; s2   }</p>
+<pre><code>sorted(strs,{(s1:String,s2:String) -&gt; Bool in return s1 &gt; s2})
+</code></pre><p>//swift 自动类型推断 可以简化成这样</p>
+<pre><code>sorted(strs, { s1 ,s2 in return s1 &gt; s2})
+</code></pre><p>//单表达式 闭包还可以省略 return 关键字</p>
+<pre><code>sorted(strs,{s1 , s2 in s1 &gt; s2})
+</code></pre><p>//函数作为返回值,(Int -&gt; Int) 说明返回的函数 参数是Int 返回结果也是Int<br>//ps 注意返回的函数只返回函数的名字，不包括（）</p>
+<pre><code>func makeIncrementer() -&gt;(Int -&gt; Int){
+
+    func addOnce(x : Int) -&gt; Int{
+        return x + 1
+    }
+    return addOnce
+}
+
+var addOne = makeIncrementer()
+
+addOne(5)
+</code></pre><p>//函数当做个参传进另一个函数</p>
+<pre><code>func hasManyMatch(nums:[Int],condition : Int -&gt; Bool) -&gt; Bool{
+
+for n in nums {
+    if condition(n){
+        return true
+    }
+}
+return false
+}
+
+func lessThenTen(num : Int) -&gt; Bool{
+        return num &lt; 10
+}
+
+var bs = [1,23,4,5]
+
+hasManyMatch(bs,lessThenTen)
+</code></pre><p>####创建一个类</p>
+<p>//普通的类，没有构造函数，所有的用到的 属性必须初始化</p>
+<pre><code>class Animal{
+
+var hair : String = &quot;黄色&quot;
+var name : String = &quot;老虎&quot;
+
+func speckEnglish() -&gt; String{
+    return &quot;I am a \(name),and My hiar is \(hair)&quot;
+}
+}
+</code></pre><p>//包含构造函数的类，熟悉可以初始化，也可以不初始化</p>
+<pre><code>class People {
+var name:String
+
+var age : Int
+
+init(name:String,age:Int){
+    self.name = name
+    self.age = age
+}
+
+func sayHello(){
+    print(&quot;My name is \(name),and my age is \(age)&quot;)
+}
+}
+</code></pre><p>//在创建对象的时候，构造函数的参数必须显示的显示出参数的名字</p>
+<pre><code>var peo = People(name: &quot;ming&quot;,age: 18)
+peo.sayHello()
+</code></pre><p>####继承</p>
+<pre><code>class Teacher : People {
+
+var work:String
+
+init(work : String, name : String, age : Int){
+    self.work = work
+    super.init(name: name, age: age)
+}
+
+func writeToTop(content:String){
+    print(&quot;I am doing work \(content)&quot; )
+}
+override func sayHello() {
+    super.sayHello()
+    print(&quot;,and My work is an\(work)&quot;)
+}
+}
+
+var teacher = Teacher(work: &quot;Teacher&quot;, name: &quot;Ming&quot;, age: 35)
+
+teacher.sayHello()
+teacher.writeToTop(&quot;扫地&quot;)
+</code></pre><p>####枚举</p>
+<pre><code>enum Suit{
+
+   case Spades,Hearts,Diamonds,Clubs
+
+func simpaleDescrition() -&gt; String{
+    switch self{
+    case .Spades:
+        return &quot;spades&quot;
+    case .Hearts:
+        return &quot;hearts&quot;
+    case .Diamonds:
+        return &quot;diamonds&quot;
+    case .Clubs:
+        return &quot;clubs&quot;
+    }
+}
+
+func color() -&gt; String{
+    switch self{
+    case .Spades:
+        return &quot;black&quot;
+    case .Hearts:
+        return &quot;black&quot;
+    case .Diamonds:
+        return &quot;red&quot;
+    case .Clubs:
+        return &quot;red&quot;
+    }
+}
+</code></pre><p>}</p>
+<p>####结构体</p>
+<pre><code>struct Card {
+var rank: Rank
+var suit: Suit
+
+func simpaleDescription() -&gt; String{
+    return &quot;The \(rank.simpleDescription()) of \(suit.simpaleDescrition())&quot;
+}
+
+}
+
+let card = Card(rank: Rank.Three, suit: Suit.Spades)
+var result = card.simpaleDescription()
+</code></pre><p>####枚举、结构体类的区别</p>
+<p>类：在传递过程中传递的时引用<br>结构体和枚举：在传递过程中传递的是值，也就是一个值的副本</p>
+<p>####例子：<br> Ios用swift开发的TodoList和Weather（基站定位，联网刷新，JSON解析）<a href="https://github.com/ccpy/swiftnote" target="_blank" rel="external">点击查看项目代码</a></p>
+<p>#####总结</p>
+<p>感觉swift语法很爽</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/15/swift编程语言学习/" data-id="cis7casx50010p7jxflr107c1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Auxer制作原型图，在手机里浏览" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/11/20/Auxer制作原型图，在手机里浏览/">Auxer原型在手机上访问，用Tomcat当做服务器。</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-11-19T16:00:00.000Z" itemprop="datePublished">11-20-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Auxer/">Auxer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Auxer制作的原型图在手机里面浏览<br>最近接触到Auxer原型制作工具，本着好奇的心理来做公司项目的原型。熟悉了Auxer的基本操作，和原型制作流程后，感觉很棒，特别是加上一些lib后，看起来跟真正的产品似得。当然这也是Auxer的强大之处，没什么好惊奇的。不明觉厉嘛~ 在我做完产品高保真原型图的时候，Google了一下怎么在手机端直接查看原型，这样的话会显示的更加逼真。可以看到产品成型后的样子，无疑是一个很好的体验。看网络上的大部分都是上传的Auxer自己带的服务器上去。这样无疑最好，但是由于国内网络的原因。访问Auxer提供的服务器不是很慢，就是被墙。体验非常糟糕。但是作为程序员的我，可不会因为这样的问题就算了。这时想到了我大JAVA的开源服务器Tomact，如果我在本地起一个Tomcat服务，然后吧App原型生产的Html保真原型放到Tomact里面，这样的话应该可以跟Auxer提供的服务器是一样的效果。于是就干了起来，结果如预期，哈哈，体验一下吧，亲们。</p>
+<ul>
+<li>下载Tomcat（这个不用说了吧 -、- ）</li>
+<li>配置Tomcat的环境变量。</li>
+<li>启动到Tomcat的bin目录里双击startup.bat文件，启动Tomcat。</li>
+<li>把原型图文件放到Tomcat的Root目录下面。</li>
+<li>在PC端浏览器里打开localhost:8080/你的项目/index.html（有时候是start.html）PS：生产原型时的注意事项在<a href="http://www.jianshu.com/p/3dc243cd2b6c" title="点击这里查看" target="_blank" rel="external">http://www.jianshu.com/p/3dc243cd2b6c</a></li>
+<li>在手机端浏览器里访问时，需要你的手机于PC在同一个网段，这样就可以访问到你的Tomcat的服务器了。例如我的PC的内网IP是<code>192.168.1.8:8080/demo/index.html</code>。这是你就可以在手机上查看你的原型了。体验一把吧。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/20/Auxer制作原型图，在手机里浏览/" data-id="cis7caswi0001p7jxn5gz41if" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android屏幕适配" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/10/10/Android屏幕适配/">Android屏幕适配问题</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-10-09T16:00:00.000Z" itemprop="datePublished">10-10-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="支持不同大小屏幕的适配"><a href="#支持不同大小屏幕的适配" class="headerlink" title="支持不同大小屏幕的适配"></a>支持不同大小屏幕的适配</h2><p>按照官方的说法主要是注意以下几点：</p>
+<ol>
+<li>布局中尽可能的用<code>warp_content</code>或者<code>match_parent</code>。</li>
+<li>你可以用<code>LinearLayout</code>嵌套布局并且结合<code>warp_content</code>或者<code>match_parent</code>来构造复杂的界面。但是<code>LinearLayout</code>不能精确的控制布局中的组件，如果你的视图变化不是成一条直线，那么尽可能的去用<code>RelativeLayout</code>。</li>
+<li>用Size限定符来适配屏幕，创建两个布局文件：<code>res/layout/main.xml</code>(single-pane layout)和<code>res/layout-large/main.xml</code>(two-pane layout)。注意这是在屏幕的大小上分类。例如：普通手机设备和7寸平板、AndroidTV的区别分类。</li>
+<li><p><code>Smallest-width</code> 限定符允许你的设备屏幕的dp在一个最小范围内。你可以根据自己适配的设备来确定你的布局是一个面板还是两个面板（Panel）。区别也是创建两个文件：<code>res/layout/main.xml</code>和<code>res/layout-sw600dp/main.xml</code>。这意味着设备的最小宽度大于或等于600 dp将选择<code>res/layout-sw600dp/main.xml</code>，而较小的屏幕将选择<code>res/layout/main.xml</code>的布局。（适用于Android3.2版本或者以上的版本）<br>5.别名限定符，当你要适配多种大小屏幕的时候。你会创建不同的布局文件来适配布局，例如：</p>
+<pre><code>- res/layout/main.xml: single-pane layout
+- res/layout-large: multi-pane layout
+- res/layout-sw600dp: multi-pane layout 
+</code></pre><p>其中large和sw600dp都是两个Panl来呈现内容和操作的。那么你就会创建两个同意的布局文件，为了避免这样的臃肿。就用到了别名限定符。</p>
+<p> 首先创建布局文件在layout的文件夹中：</p>
+<pre><code>-res/layout/main.xml, single-pane layout
+-res/layout/main_twopanes.xml, two-pane layout
+</code></pre><p> 然后在创建下面两个文件：</p>
+<pre><code>- res/values-large/layout.xml:
+    &lt;resources&gt;
+        &lt;item name=&quot;main&quot; type=&quot;layout&quot;&gt;@layout/main_twopanes&lt;/item&gt;
+    &lt;/resources&gt;
+
+- res/values-sw600dp/layout.xml:
+    &lt;resources&gt;
+        &lt;item name=&quot;main&quot; type=&quot;layout&quot;&gt;@layout/main_twopanes&lt;/item&gt;
+    &lt;/resources&gt;
+</code></pre><p> 这两个文件的作用就是把<code>main</code>定义成<code>main_twopanes</code>的别名，这两个文件会有选择功能，在App运行的时候，根据设备的情况，来加载布局。</p>
+</li>
+<li><p>屏幕方向的适配,1.创建屏幕大小和方向上用到的布局文件。2、创建别名。3、代码中引用具体可参考：<a href="https://developer.android.com/training/multiscreen/screensizes.html#TaskUseOriQuali" title="Android官方文档" target="_blank" rel="external">“Android官方文档”</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/10/10/Android屏幕适配/" data-id="cis7caswf0000p7jxqlr89s46" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android适配机型/">Android适配机型</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-list、set、map" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/07/12/list、set、map/">Android访问wcf时，结构性数据传递方法(List,Set,Map)</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-07-12T03:11:54.000Z" itemprop="datePublished">07-12-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##工作总结</p>
+<p>###android访问wcf时，结构性数据传递方法。—— 续上 ——</p>
+<blockquote>
+<p>在程序当中，list，set，map，这样的集合会经常用到。那么在android访问wcf中是怎么传递这样的数据呢，正常的话，我们直接传进去我们的list、set、map，或者是我们自定义的实体对象，程序就会报一个“没有序列化的错误信息”，很明显，在网络中传递对象，必须要序列化。而且Soap有自己特殊的序列化接口，我们实现起来会很麻烦，（自己觉得麻烦~）。今天我们就来说一下另一个方法。通过上次的文章，我们知道，在android客户端访问wcf中，可以直接向request调用addPropert()，传进去String的参数，那么我们可以推出，怎么把list、set、map中的结构性的数据转换成String呢。答案当然是JSON了。在androidAPI中，为我们提供了相应的JSON对象，例如：JSONObject、JSONArray、等等，这样就可以把集合中包含的实体，通过相应的方法，就可以把集合转换成String对象，这样呢，就可以直接传递了，从而不用序列化对象。下面看代码：</p>
+</blockquote>
+<pre><code>public class People {
+   private String age;
+   private String name;
+
+    /**
+     * 将list转换成json对像
+     * @param items
+     * @return
+     */
+    public static String ConvertToJson(List&lt;People&gt; items) {
+        String jsonString = &quot;&quot;;
+        JSONArray jsonArray = new JSONArray();
+        try {
+            if (items == null) {
+                return null;
+            } else {
+                if (items.size() &gt; 0) {
+                    for (People item : items) {
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put(&quot;age&quot;, item.age);
+                        jsonObject.put(&quot;name&quot;, item.name);
+                        jsonArray.put(jsonObject);
+                    }
+                    jsonString = jsonArray.toString();
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonString;
+    }
+
+    /**
+     * 将对象序列化
+     * @param item
+     * @return 
+     */
+    public static String ConvertToJson(People item) {
+        String jsonString = &quot;&quot;;
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put(&quot;age&quot;, item.age);
+            jsonObject.put(&quot;name&quot;, item.name);
+            jsonString = jsonObject.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonString;
+    }
+
+    //...省略set、get方法~
+}
+</code></pre><p>###ListView背景点击效果消失</p>
+<blockquote>
+<p>其中还遇到一个小问题，就是当listview的itemview设置了background属性的时候，且设置的属性为静态的。这样的话，listview就不会响应点击事件的效果了(默认listview的Item点击事件背景颜色变化是黄色~)。解决办法是把背景设置成selector的背景。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/07/12/list、set、map/" data-id="cis7casx3000tp7jx3ugi3vu3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android自定义对象序列化/">android自定义对象序列化</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-platform开发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/07/12/platform开发/">Android端插件平台开发</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-07-11T16:00:00.000Z" itemprop="datePublished">07-12-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###android端插件平台开发</p>
+<blockquote>
+<p>最近在公司中，android端的插件平台开发，以前没有接触过这方面的东西，接到手后先是小激动，后来就是接踵而来的问题了。在PC端有很多插件话的软件，最为java程序员熟知的Eclipse就是插件的宿主程序，很多的功能都是经过集成插件来实现的，好处大家也看到了。你需要什么，你就可以去安装什么插件，而不是所有管你有没有用的功能都给你加进去，经过几天的琢磨，和在网上找的一些资料，目前插件平台已经具备了插件话的模型。后期还要完善的就是其android应用开发结构更清晰，使界面跟业务处理逻辑更好的解耦，在开发插件的时候，根据公司的约定，就可以完成功能协同开发。底层连接数据库的代码，就可以根据Domain，用代码生成器自动生成，解放程序员的劳动力。下面是我参考的一些资料：<br>在插件话过程中你遇到的问题，大多数都可以在这里找到答案，包括最为头疼的上下文、资源文件的问题，</p>
+</blockquote>
+<ol>
+<li><a href="http://blog.zhourunsheng.com/2011/09/%E6%8E%A2%E7%A7%98%E8%85%BE%E8%AE%AFandroid%E6%89%8B%E6%9C%BA%E6%B8%B8%E6%88%8F%E5%B9%B3%E5%8F%B0%E4%B9%8B%E4%B8%8D%E5%AE%89%E8%A3%85%E6%B8%B8%E6%88%8Fapk%E7%9B%B4%E6%8E%A5%E5%90%AF%E5%8A%A8%E6%B3%95/&quot;腾讯手机游戏平台app探索&quot;" target="_blank" rel="external">腾讯手机游戏平台app探索</a></li>
+</ol>
+<ol>
+<li><a href="http://my.oschina.net/mutour/blog/179242" title="简单的插件模型demo" target="_blank" rel="external">简单的插件模型demo</a></li>
+</ol>
+<ol>
+<li><a href="http://blog.csdn.net/com360/article/details/14127395" title="原理及问题解析" target="_blank" rel="external">原理及问题解析</a></li>
+</ol>
+<ol>
+<li><a href="http://blog.csdn.net/singwhatiwanna/article/details/22597587" target="_blank" rel="external">插件问题解决</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/07/12/platform开发/" data-id="cis7casx4000vp7jx2ginht6k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android访问wcf和Spinner宽度" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/06/22/android访问wcf和Spinner宽度/">Android访问wcf服务、Spinner设置宽度</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-06-21T16:00:00.000Z" itemprop="datePublished">06-22-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###Android访问wcf服务时候遇到的问题</p>
+<blockquote>
+<p>由于公司后台服务器，用的是wcf，在android中访问wcf是跟其他访问webservice是有出入的。访问webservice时，数据传输是用json，或者是xml。当然在wcf原理也是这样的。android反问wcf用的一个第三方的包ksoap2来访问的。当然你也可以自己去实现访问客户端，进行数据交互，但是实现起来无非就是自己实现了一遍ksoap2。我就不再重复制造轮子了..有兴趣的可以自己实现一下，我在这里就是记录一下ksoap2的用法：</p>
+</blockquote>
+<pre><code>public boolean login(User u) {
+        boolean is_login = false;
+        try {
+            SoapObject request = new SoapObject(NAME_SPACE, METHOD_NAME);
+            request.addProperty(&quot;userName&quot;, u.getName());
+            request.addProperty(&quot;passWord&quot;, u.getPassword());
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+
+            HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+
+            SoapPrimitive result = (SoapPrimitive) envelope.getResponse();
+            is_login = Boolean.valueOf(result.toString());
+            //---------------------------输出台观看输出------------------------
+            String resultData = result.toString();
+            // 0 is the first object of data
+            Log.d(&quot;resultData内容-----&gt;&quot; ,resultData);
+            Log.d(&quot;value-----&gt;&quot; ,result.getValue());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return is_login;
+    }
+</code></pre><p>在这段代码中有主要的几个对象<code>SoapObject</code>、<code>SoapSerializationEnvelope</code>、<code>HttpTransportSE</code>、<code>SoapPrimitive</code>。</p>
+<ul>
+<li><p>SoapObject这是一个很有用的对象，不管你是从服务器端得到的数据对象是什么类型，都可以用这个对象来接收。然后你得到的数据的结构，来解析出你有用数据。SoapObject提供了一些解析数据的方法。例如：<code>getProperty(index)</code>,<code>getPropertyAsString(index)</code>,其中的<code>index</code>是你得到数据结构的<code>key</code>，你可以借助网上的一些访问wcf的可视化工具来看数据的key。在这我用的是一个叫：<code>Storm</code>的小工具</p>
+</li>
+<li><p>SoapSerializationEnvelope对象主要是负责网络中数据传输时候的序列化问题和访问响应的对象，可以从中得到响应的结果。</p>
+</li>
+<li><p>HttpTransportSE这个就是一个类HttpClient的对象，调用他的<code>call（）</code>方法，向一个地址发送请求。</p>
+</li>
+<li><p>SoapPrimitive 跟SoapObject对象很相似，简单理解为：在返回多个对象是一个集合的时候用SoapObject,在返回对象是单一个对象的时候，用SaopPrimitive </p>
+</li>
+</ul>
+<p>###AndroidSpinner控件设置Width</p>
+<blockquote>
+<p>android Spinner自适应宽度，Spinner默认的弹出来一个窗口，fill_width宽度的窗口，当你数据很少的时候用户体验会很差，在网上看了一些朋友的说法就是设置spinner所用的adapter中填充的布局的宽度，但是这样的方法是实现不了spinner下拉菜单变窄的，于是我就看了下Spinner源码。在Spinner类中有这样的片段。</p>
+</blockquote>
+<pre><code>// Only measure this many items to get a decent max width.
+private static final int MAX_ITEMS_MEASURED = 15;
+
+/**
+ * Use a dialog window for selecting spinner options.
+ */
+public static final int MODE_DIALOG = 0;
+
+/**
+ * Use a dropdown anchored to the Spinner for selecting spinner options.
+ */
+public static final int MODE_DROPDOWN = 1;
+
+/**
+ * Use the theme-supplied value to select the dropdown mode.
+ */
+private static final int MODE_THEME = -1;
+
+/** Forwarding listener used to implement drag-to-open. */s
+int mDropDownWidth;
+</code></pre><p>当我看到mDropDownWidth的时候，就可以判断这个View是可以实现变窄的。其中看到一个方法：</p>
+<pre><code>/**
+ * Set the width of the spinner&apos;s popup window of choices in pixels. This value
+ * may also be set to {@link android.view.ViewGroup.LayoutParams#MATCH_PARENT}
+ * to match the width of the Spinner itself, or
+ * {@link android.view.ViewGroup.LayoutParams#WRAP_CONTENT} to wrap to the measured size
+ * of contained dropdown list items.
+ *
+ * **Only valid in {@link #MODE_DROPDOWN}; this method is a no-op in other modes.**
+ *
+ * @param pixels Width in pixels, WRAP_CONTENT, or MATCH_PARENT
+ *
+ * @attr ref android.R.styleable#Spinner_dropDownWidth
+ */
+public void setDropDownWidth(int pixels) {
+    if (!(mPopup instanceof DropdownPopup)) {
+        Log.e(TAG, &quot;Cannot set dropdown width for MODE_DIALOG, ignoring&quot;);
+        return;
+    }
+    mDropDownWidth = pixels;
+}
+</code></pre><p>这个方法的说明中有这么一段：<code>Only valid in {@link #MODE_DROPDOWN}; this method is a no-op in other modes.</code>大概内容就是，这个方法只适用于Spinner的mode为<code>MODE_DROPDOWN</code>，这时侯才会有效。所以接下来就是去设置Spiner的mode，但是我在代码中没有找到这个设置方法，且Spinner默认的模式为<code>MODE_DIALOG</code>，后来我再xml布局文件找到了设置Spinner模式的属性。Spinner空间又这样的一个属性：<code>android:spinnerMode=&quot;dropdown&quot;</code>这就可以在代码中调用<code>setDropDownWidth（int pixels）</code>方法来完成Spinner弹出框宽度的设置。</p>
+<blockquote>
+<p>下次给大家带来android中怎么向wcf服务器传递复杂的数据对象，譬如：list、set、map 以及自己定义的model</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/22/android访问wcf和Spinner宽度/" data-id="cis7caswy000hp7jxbnqdjzdj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android、wcf、webService/">android、wcf、webService</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-andoridINSTALL_FAILED_OLDER_SDK" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/06/12/andoridINSTALL_FAILED_OLDER_SDK/">Android开发时遇到的INSTALL_FAILED_OLDER_SDK。</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-06-11T16:00:00.000Z" itemprop="datePublished">06-12-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###当你发生这样的错误：INSTALL<em> FAILED</em> OLDER_SDK<br>如果你用的是andorid studio编辑器的话，有可能遇到这样的错误Failure [INSTALL_FAILED_OLDER_SDK]，这是由于编译时，针对的平台是你所设置的平台，而在你运行项目的时候，所用的平台是其他的，例如，你编译的是4.0 而运行用的设备的版本是4.4或者其他的，这是就会造成这样的错误。</p>
+<p>办法，你可以修改build.gradle文件中的</p>
+<pre><code>android {
+    compileSdkVersion 18
+    buildToolsVersion &quot;18.1.1&quot;
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 16
+    }
+}
+</code></pre><p>更改targetSdkVersion成你所用设备的版本</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/12/andoridINSTALL_FAILED_OLDER_SDK/" data-id="cis7caswn0005p7jxpiqskirf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android_listview图片异步加载，和图片错乱" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <a class="article-title" href="/2014/05/20/android_listview图片异步加载，和图片错乱/">解决Android ListView图片异步加载，和图片错乱</a>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-05-19T16:00:00.000Z" itemprop="datePublished">05-20-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Android ListView图片异步加载，和图片错乱</p>
+<p>####图片管理（下载、缓存）</p>
+<p>在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享。</p>
+<blockquote>
+<p>图片管理类：</p>
+</blockquote>
+<pre><code>public class ImageUtils {
+
+
+/**
+ * 加载图片到缓存
+ * 必须异步调用
+ *
+ * @param imgUrl 图片地址
+ */
+public static Bitmap loadImageForCache(String imgUrl) {
+    String localImgPath = getLocalPath(imgUrl);
+    File file = new File(localImgPath);
+    if (!file.exists()) {
+        //下载图片
+        downLoadImg(imgUrl);
+    }
+    Bitmap mBitmap = ImageLoader.decodeSampledBitmapFromResource(localImgPath,             200, 300);
+    if (mBitmap != null) {
+        ImageLoader.putBitmapForCache(imgUrl, mBitmap);
+        return mBitmap;
+    }
+    return null;
+}
+
+/**
+ * 下载图片
+ * 1.得到输入流
+ * 2.创建输出流
+ * 3.写到内存卡
+ * 4.加载到缓存
+ *
+ * @param url 图片地址
+ */
+private static void downLoadImg(String url) {
+    FileOutputStream fos = null;
+    BufferedInputStream bis = null;
+    BufferedOutputStream bos = null;
+    File imgFile = null;
+    try {
+        URL relUrl = new URL(url);
+        HttpURLConnection conn = (HttpURLConnection) relUrl.openConnection();
+        conn.setConnectTimeout(5 * 1000);
+        conn.setReadTimeout(15 * 1000);
+        conn.setDoInput(true);
+        conn.setDoOutput(true);
+        InputStream is = conn.getInputStream();
+        bis = new BufferedInputStream(is);
+        imgFile = new File(getLocalPath(url));
+        fos = new FileOutputStream(imgFile);
+        bos = new BufferedOutputStream(fos);
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = bis.read(buffer)) != -1) {
+            bos.write(buffer, 0, length);
+            bos.flush();
+        }
+
+    } catch (MalformedURLException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (bis != null) {
+                bis.close();
+            }
+            if (fos != null) {
+                fos.close();
+            }
+            if (bos != null) {
+                bos.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    Bitmap bitmap = null;
+    if (imgFile != null) {
+        bitmap = ImageLoader.decodeSampledBitmapFromResource(getLocalPath(url), 200, 300);
+        if (bitmap != null) {
+            ImageLoader.putBitmapForCache(url, bitmap);
+        }
+    }
+}
+
+
+/**
+ * 得到图片本地的路径
+ *
+ * @param pathUrl 图片下载地址
+ * @return 本地图片路径
+ */
+public static String getLocalPath(String pathUrl) {
+        int lastIndex = pathUrl.lastIndexOf(&quot;/&quot;);
+           String imgName = pathUrl.substring(lastIndex + 1);
+        //内存卡根目录路径
+        String rootDir = Environment.getExternalStorageDirectory().getPath();
+        //图片存储的路径
+        String imgDir = rootDir + &quot;/download/&quot;;
+        File file = new File(imgDir);
+            if (!file.exists()) {
+            file.mkdirs();
+        }
+    return imgDir + imgName;
+    }
+}
+</code></pre><blockquote>
+<p>内存管理类</p>
+</blockquote>
+<pre><code>public class ImageLoader {
+
+    private static ImageLoader imageLoader;
+    private static LruCache&lt;String, Bitmap&gt; mMemoryCache;
+
+    private ImageLoader() {
+        long maxMemory = Runtime.getRuntime().maxMemory();
+        long cacheSize = maxMemory / 8;
+        mMemoryCache = new LruCache&lt;String, Bitmap&gt;((int) cacheSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap value) {
+                return value.getByteCount();
+            }
+        };
+    }
+
+      /**
+     * 实例化ImageLoader
+     *
+     * @return
+     */
+     public static ImageLoader getInstance() {
+        if (imageLoader == null) {
+            imageLoader = new ImageLoader();
+            }
+        return imageLoader;
+    }
+
+/**
+ * 从缓存中去图片
+ *
+ * @param key 下载路径
+ * @return 图片的位图
+ */
+public static Bitmap getBitmapForCache(String key) {
+    return mMemoryCache.get(key);
+}
+
+/**
+ * 往缓存中存图片
+ *
+ * @param key    下载路径
+ * @param bitmap 位图
+ */
+public static void putBitmapForCache(String key, Bitmap bitmap) {
+    if (getBitmapForCache(key) == null) {
+        mMemoryCache.put(key, bitmap);
+    }
+}
+
+
+/**
+ * @param pathName 图片的路径/名称
+ * @param reqWidth 图片最后的宽度
+ * @param reqHeight 图片最后的高度
+ * @return 经过缩放的位图
+ */
+public static Bitmap decodeSampledBitmapFromResource(String pathName,
+                                                     int reqWidth, int reqHeight) {
+    BitmapFactory.Options options = new BitmapFactory.Options();
+    BitmapFactory.decodeFile(pathName, options);
+    options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+    options.inJustDecodeBounds = false;
+    return BitmapFactory.decodeFile(pathName, options);
+}
+
+/**
+ * 根据请求的宽度和高度，返回要压缩的比例
+ *
+ * @param options 
+ * @param reqWidth 图片最后显示的宽度
+ * @param reqHeight 图片最后显示的高度
+ * @return 图片缩放的比例
+ */
+public static int calculateInSampleSize(BitmapFactory.Options options,
+                                        int reqWidth, int reqHeight) {
+    // 源图片的宽度
+    final int width = options.outWidth;
+    final int height = options.outHeight;
+    int inSampleSize = 1;
+    int widthRatio = 1;
+    int heightRatio = 1;
+    if (width &gt; reqWidth) {
+        // 计算出实际宽度和目标宽度的比率
+        widthRatio = Math.round((float) width / (float) reqWidth);
+    }
+    if (height &gt; reqHeight) {
+        heightRatio = Math.round((float) height / (float) reqHeight);
+    }
+
+    inSampleSize = widthRatio &gt; heightRatio ? widthRatio : heightRatio;
+
+    return inSampleSize;
+}
+}
+</code></pre><p>有了这两个类在图片出来上就很简单了。在图片下载的时候一定要异步去下载，异步在Android中有很多中方式，例如：AsyncTask、IntentService、Thread这些都可以完成异步操作。</p>
+<p>####图片错位的处理</p>
+<p>在listview中加载图片，为了listview的性能，经常会重用convertView,如果只重用contentView，即使有图片加载，也不会发生图片的错位。如果只有异步，没有重用convertView，也不会发生图片错位。且这种做法会使listview变得很卡，体验很差。当两者都有的时候，就会发生错位（原因网上有一大堆）。网上有好多答案，是在用setTag的方法来解决的。且这样以来就不合适用viewHolder来优化listview了，且代码看着很乱，我自己的做法是，在viweHoler类中加入一个属性position。<code>position</code>这个属性是在标示viewHoler的唯一性的。每次为viewholder.imageview设置图片的时候，判断poisition和当前的位置是否相等，如果相等则把当前的Bitmap设置道当前的imageview上。代码如下：</p>
+<pre><code>public class BookListAdapter extends BaseAdapter {
+
+private List&lt;Book&gt; books;
+private Context ctx;
+private LayoutInflater layoutInflater;
+
+public BookListAdapter(List&lt;Book&gt; books, Context ctx) {
+    this.books = books;
+    this.ctx = ctx;
+    ImageLoader.getInstance();
+}
+
+@Override
+public int getCount() {
+    return books.size();
+}
+
+@Override
+public Object getItem(int i) {
+    return books.get(i);
+}
+
+@Override
+public long getItemId(int i) {
+    return i;
+}
+
+@Override
+public View getView(int i, View view, ViewGroup viewGroup) {
+    if (layoutInflater == null) {
+        layoutInflater = LayoutInflater.from(ctx);
+    }
+    BookViewHolder bookViewHolder;
+    if (view == null) {
+        bookViewHolder = new BookViewHolder();
+        view = layoutInflater.inflate(R.layout.book_list_item, null);
+        bookViewHolder.ivBookPhoto = (ImageView) view.findViewById(R.id.iv_book);
+        bookViewHolder.tvBookName = (TextView) view.findViewById(R.id.book_name);
+        bookViewHolder.tvBookAuthor = (TextView) view.findViewById(R.id.book_author);
+        bookViewHolder.tvBookPublish = (TextView) view.findViewById(R.id.book_publish);
+        bookViewHolder.tvBookType = (TextView) view.findViewById(R.id.book_type);
+        view.setTag(bookViewHolder);
+    } else {
+        bookViewHolder = (BookViewHolder) view.getTag();
+    }
+
+    bookViewHolder.position = i;
+    new BookImageAsyncTask(i, bookViewHolder).execute(books.get(i).getPhoto());
+    bookViewHolder.tvBookAuthor.setText(&quot;作者:&quot; + books.get(i).getAuthor());
+    bookViewHolder.tvBookName.setText(&quot;书名：&quot; + books.get(i).getBookName());
+    bookViewHolder.tvBookPublish.setText(&quot;出版社：&quot; + books.get(i).getPublisherName());
+    bookViewHolder.tvBookType.setText(&quot;分类：&quot; + books.get(i).getCategoryId());
+
+    return view;
+}
+
+static class BookViewHolder {
+    int position;
+    ImageView ivBookPhoto;
+    TextView tvBookName;
+    TextView tvBookAuthor;
+    TextView tvBookPublish;
+    TextView tvBookType;
+}
+
+
+/**
+ * 1.参数
+ * 2.进度
+ * 3.返回值
+ */
+class BookImageAsyncTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
+    private String imgUrl;
+    private ImageView ivBook;
+
+    private int mPosition;
+    private BookViewHolder mViewHolder;
+    //当前item的位置，和viewHolder
+    public BookImageAsyncTask(int position, BookViewHolder holder) {
+        this.mPosition = position;
+        this.mViewHolder = holder;
+    }
+    //后台运行
+    @Override
+    protected Bitmap doInBackground(String... strings) {
+        imgUrl = strings[0];
+        Log.d(&quot;tag&quot;, imgUrl);
+        String IP_HOST = &quot;http://192.168.1.8:8080/LibraryImage/&quot;;
+        return ImageUtils.loadImageForCache(IP_HOST + imgUrl);
+    }
+    //doinbackground返回值作为参数
+    @Override
+    protected void onPostExecute(Bitmap bitmap) {
+
+        if (mViewHolder.position == mPosition) {
+            mViewHolder.ivBookPhoto.setImageBitmap(bitmap);
+        }
+    }
+}
+
+
+}
+</code></pre><p>这样写起来代码就很好看了。且清晰易懂。</p>
+<p>####扯淡</p>
+<p>最近面试一哥们，问他用什么开发工具，他还是停留在Eclipse时代，想想简直可怕，特别是在windos的响应速度上，不谈了。我推荐他用IDEA。其中付费版的包括了Android、Java的大部分的框架，且有一个利器就是TestRESTWebService，在和服务器接口对接、调试的时候很方便。DataBase工具看起数据库也很方便，查看各种各样的数据库哦。Commander用起来也很方便，可以轻松的查看一个项目的结构，类结构，。相当不错。还集成了Git、Svn、Cvs等版本控制插件，用起来不要太爽。墙裂推荐！！</p>
+<p>####总结</p>
+<p>图片处理在Android开发中是家常便饭，为了不一直重复造轮子，Google的一个开源项目Volley是一个很不错的选择。你可以在Github上找到Volley的源代码。有了Volley在图片处理方面就很轻松了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/20/android_listview图片异步加载，和图片错乱/" data-id="cis7caswx000gp7jxxrmfsm4v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         

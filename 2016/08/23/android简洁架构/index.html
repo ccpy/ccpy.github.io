@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android简洁架构 | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#Android简洁架构
+###Android原生的开发
+
+都说Android在开发中，采用了MVC模式，但是在开发过程中，能感觉到整个Activity兼职于界面层，控制层。且Activity和界面层耦合度相当高，如果界面的空间要更改，整个Activity的实现要跟随着View层的改动而改动，这样的开发架构，实在是不够灵活，扩展性差，如果需求一改动基本上要不原来的实现再重新实现一遍，在开发过程中我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android简洁架构">
+<meta property="og:url" content="http://yoursite.com/2016/08/23/android简洁架构/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="#Android简洁架构
+###Android原生的开发
+
+都说Android在开发中，采用了MVC模式，但是在开发过程中，能感觉到整个Activity兼职于界面层，控制层。且Activity和界面层耦合度相当高，如果界面的空间要更改，整个Activity的实现要跟随着View层的改动而改动，这样的开发架构，实在是不够灵活，扩展性差，如果需求一改动基本上要不原来的实现再重新实现一遍，在开发过程中我">
+<meta property="og:updated_time" content="2016-08-23T10:39:24.020Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android简洁架构">
+<meta name="twitter:description" content="#Android简洁架构
+###Android原生的开发
+
+都说Android在开发中，采用了MVC模式，但是在开发过程中，能感觉到整个Activity兼职于界面层，控制层。且Activity和界面层耦合度相当高，如果界面的空间要更改，整个Activity的实现要跟随着View层的改动而改动，这样的开发架构，实在是不够灵活，扩展性差，如果需求一改动基本上要不原来的实现再重新实现一遍，在开发过程中我">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-android简洁架构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android简洁架构
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2016-08-23T10:39:24.052Z" itemprop="datePublished">08-23-2016</time>
+    
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#Android简洁架构</p>
+<p>###Android原生的开发</p>
+<blockquote>
+<p>都说Android在开发中，采用了MVC模式，但是在开发过程中，能感觉到整个Activity兼职于界面层，控制层。且Activity和界面层耦合度相当高，如果界面的空间要更改，整个Activity的实现要跟随着View层的改动而改动，这样的开发架构，实在是不够灵活，扩展性差，如果需求一改动基本上要不原来的实现再重新实现一遍，在开发过程中我感觉到Activity担任的职责太多，代码逻辑往往不是很清晰，于是就想找其他一种模式来代替Android原生的开发模式，能把Activity从混乱的结构中解脱出来。</p>
+</blockquote>
+<p>###MVP模式</p>
+<blockquote>
+<p>在github上国外的大神在架构上提出了MVP开发架构，类似于MVC开发模式，这里的字母分别指代为：M -&gt; Model,V -&gt; View, P -&gt; Presenter。这样的开发模式，可以把Activity从复杂的Control中截图出来，把所有的业务逻辑的控制，都在Presenter中处理，而Activity只是一个Presenter的持有者，在activity中初始化，且在Presenter中完成空间的监听事件，以及界面内容的渲染。Presenter中提供了所有的业务请求代码的入口。</p>
+</blockquote>
+<p>###MVP的进阶MVVM模式</p>
+<blockquote>
+<p>MVVM在微软的技术WPF中得到了广泛的应用，字母分别值：M-Model,V-View,VM-ViewModel。MVVM是由MVP演化过来的。模式很相似，你有一个View控件，分别要有一个对应的ViewModel，来绑定View上的所有控件。在WPF中支持双向绑定，和单向绑定。View的显示跟随ViewModel的绑定的值改变而改变。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/23/android简洁架构/" data-id="cis7caswu000cp7jx665kjvii" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/23/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

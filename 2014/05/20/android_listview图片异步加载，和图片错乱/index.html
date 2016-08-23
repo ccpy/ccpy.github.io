@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>解决Android ListView图片异步加载，和图片错乱 | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决Android ListView图片异步加载，和图片错乱">
+<meta property="og:url" content="http://yoursite.com/2014/05/20/android_listview图片异步加载，和图片错乱/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享">
+<meta property="og:updated_time" content="2016-08-23T10:25:53.032Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决Android ListView图片异步加载，和图片错乱">
+<meta name="twitter:description" content="在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-android_listview图片异步加载，和图片错乱" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      解决Android ListView图片异步加载，和图片错乱
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-05-19T16:00:00.000Z" itemprop="datePublished">05-20-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Android ListView图片异步加载，和图片错乱</p>
+<p>####图片管理（下载、缓存）</p>
+<p>在日常app开发中会经常遇到图片异步下载，加载listview或者是加载到gridview中，这些都属于自己写的工具类，通用性都很强，且在这里与大家分享。</p>
+<blockquote>
+<p>图片管理类：</p>
+</blockquote>
+<pre><code>public class ImageUtils {
+
+
+/**
+ * 加载图片到缓存
+ * 必须异步调用
+ *
+ * @param imgUrl 图片地址
+ */
+public static Bitmap loadImageForCache(String imgUrl) {
+    String localImgPath = getLocalPath(imgUrl);
+    File file = new File(localImgPath);
+    if (!file.exists()) {
+        //下载图片
+        downLoadImg(imgUrl);
+    }
+    Bitmap mBitmap = ImageLoader.decodeSampledBitmapFromResource(localImgPath,             200, 300);
+    if (mBitmap != null) {
+        ImageLoader.putBitmapForCache(imgUrl, mBitmap);
+        return mBitmap;
+    }
+    return null;
+}
+
+/**
+ * 下载图片
+ * 1.得到输入流
+ * 2.创建输出流
+ * 3.写到内存卡
+ * 4.加载到缓存
+ *
+ * @param url 图片地址
+ */
+private static void downLoadImg(String url) {
+    FileOutputStream fos = null;
+    BufferedInputStream bis = null;
+    BufferedOutputStream bos = null;
+    File imgFile = null;
+    try {
+        URL relUrl = new URL(url);
+        HttpURLConnection conn = (HttpURLConnection) relUrl.openConnection();
+        conn.setConnectTimeout(5 * 1000);
+        conn.setReadTimeout(15 * 1000);
+        conn.setDoInput(true);
+        conn.setDoOutput(true);
+        InputStream is = conn.getInputStream();
+        bis = new BufferedInputStream(is);
+        imgFile = new File(getLocalPath(url));
+        fos = new FileOutputStream(imgFile);
+        bos = new BufferedOutputStream(fos);
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = bis.read(buffer)) != -1) {
+            bos.write(buffer, 0, length);
+            bos.flush();
+        }
+
+    } catch (MalformedURLException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (bis != null) {
+                bis.close();
+            }
+            if (fos != null) {
+                fos.close();
+            }
+            if (bos != null) {
+                bos.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    Bitmap bitmap = null;
+    if (imgFile != null) {
+        bitmap = ImageLoader.decodeSampledBitmapFromResource(getLocalPath(url), 200, 300);
+        if (bitmap != null) {
+            ImageLoader.putBitmapForCache(url, bitmap);
+        }
+    }
+}
+
+
+/**
+ * 得到图片本地的路径
+ *
+ * @param pathUrl 图片下载地址
+ * @return 本地图片路径
+ */
+public static String getLocalPath(String pathUrl) {
+        int lastIndex = pathUrl.lastIndexOf(&quot;/&quot;);
+           String imgName = pathUrl.substring(lastIndex + 1);
+        //内存卡根目录路径
+        String rootDir = Environment.getExternalStorageDirectory().getPath();
+        //图片存储的路径
+        String imgDir = rootDir + &quot;/download/&quot;;
+        File file = new File(imgDir);
+            if (!file.exists()) {
+            file.mkdirs();
+        }
+    return imgDir + imgName;
+    }
+}
+</code></pre><blockquote>
+<p>内存管理类</p>
+</blockquote>
+<pre><code>public class ImageLoader {
+
+    private static ImageLoader imageLoader;
+    private static LruCache&lt;String, Bitmap&gt; mMemoryCache;
+
+    private ImageLoader() {
+        long maxMemory = Runtime.getRuntime().maxMemory();
+        long cacheSize = maxMemory / 8;
+        mMemoryCache = new LruCache&lt;String, Bitmap&gt;((int) cacheSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap value) {
+                return value.getByteCount();
+            }
+        };
+    }
+
+      /**
+     * 实例化ImageLoader
+     *
+     * @return
+     */
+     public static ImageLoader getInstance() {
+        if (imageLoader == null) {
+            imageLoader = new ImageLoader();
+            }
+        return imageLoader;
+    }
+
+/**
+ * 从缓存中去图片
+ *
+ * @param key 下载路径
+ * @return 图片的位图
+ */
+public static Bitmap getBitmapForCache(String key) {
+    return mMemoryCache.get(key);
+}
+
+/**
+ * 往缓存中存图片
+ *
+ * @param key    下载路径
+ * @param bitmap 位图
+ */
+public static void putBitmapForCache(String key, Bitmap bitmap) {
+    if (getBitmapForCache(key) == null) {
+        mMemoryCache.put(key, bitmap);
+    }
+}
+
+
+/**
+ * @param pathName 图片的路径/名称
+ * @param reqWidth 图片最后的宽度
+ * @param reqHeight 图片最后的高度
+ * @return 经过缩放的位图
+ */
+public static Bitmap decodeSampledBitmapFromResource(String pathName,
+                                                     int reqWidth, int reqHeight) {
+    BitmapFactory.Options options = new BitmapFactory.Options();
+    BitmapFactory.decodeFile(pathName, options);
+    options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+    options.inJustDecodeBounds = false;
+    return BitmapFactory.decodeFile(pathName, options);
+}
+
+/**
+ * 根据请求的宽度和高度，返回要压缩的比例
+ *
+ * @param options 
+ * @param reqWidth 图片最后显示的宽度
+ * @param reqHeight 图片最后显示的高度
+ * @return 图片缩放的比例
+ */
+public static int calculateInSampleSize(BitmapFactory.Options options,
+                                        int reqWidth, int reqHeight) {
+    // 源图片的宽度
+    final int width = options.outWidth;
+    final int height = options.outHeight;
+    int inSampleSize = 1;
+    int widthRatio = 1;
+    int heightRatio = 1;
+    if (width &gt; reqWidth) {
+        // 计算出实际宽度和目标宽度的比率
+        widthRatio = Math.round((float) width / (float) reqWidth);
+    }
+    if (height &gt; reqHeight) {
+        heightRatio = Math.round((float) height / (float) reqHeight);
+    }
+
+    inSampleSize = widthRatio &gt; heightRatio ? widthRatio : heightRatio;
+
+    return inSampleSize;
+}
+}
+</code></pre><p>有了这两个类在图片出来上就很简单了。在图片下载的时候一定要异步去下载，异步在Android中有很多中方式，例如：AsyncTask、IntentService、Thread这些都可以完成异步操作。</p>
+<p>####图片错位的处理</p>
+<p>在listview中加载图片，为了listview的性能，经常会重用convertView,如果只重用contentView，即使有图片加载，也不会发生图片的错位。如果只有异步，没有重用convertView，也不会发生图片错位。且这种做法会使listview变得很卡，体验很差。当两者都有的时候，就会发生错位（原因网上有一大堆）。网上有好多答案，是在用setTag的方法来解决的。且这样以来就不合适用viewHolder来优化listview了，且代码看着很乱，我自己的做法是，在viweHoler类中加入一个属性position。<code>position</code>这个属性是在标示viewHoler的唯一性的。每次为viewholder.imageview设置图片的时候，判断poisition和当前的位置是否相等，如果相等则把当前的Bitmap设置道当前的imageview上。代码如下：</p>
+<pre><code>public class BookListAdapter extends BaseAdapter {
+
+private List&lt;Book&gt; books;
+private Context ctx;
+private LayoutInflater layoutInflater;
+
+public BookListAdapter(List&lt;Book&gt; books, Context ctx) {
+    this.books = books;
+    this.ctx = ctx;
+    ImageLoader.getInstance();
+}
+
+@Override
+public int getCount() {
+    return books.size();
+}
+
+@Override
+public Object getItem(int i) {
+    return books.get(i);
+}
+
+@Override
+public long getItemId(int i) {
+    return i;
+}
+
+@Override
+public View getView(int i, View view, ViewGroup viewGroup) {
+    if (layoutInflater == null) {
+        layoutInflater = LayoutInflater.from(ctx);
+    }
+    BookViewHolder bookViewHolder;
+    if (view == null) {
+        bookViewHolder = new BookViewHolder();
+        view = layoutInflater.inflate(R.layout.book_list_item, null);
+        bookViewHolder.ivBookPhoto = (ImageView) view.findViewById(R.id.iv_book);
+        bookViewHolder.tvBookName = (TextView) view.findViewById(R.id.book_name);
+        bookViewHolder.tvBookAuthor = (TextView) view.findViewById(R.id.book_author);
+        bookViewHolder.tvBookPublish = (TextView) view.findViewById(R.id.book_publish);
+        bookViewHolder.tvBookType = (TextView) view.findViewById(R.id.book_type);
+        view.setTag(bookViewHolder);
+    } else {
+        bookViewHolder = (BookViewHolder) view.getTag();
+    }
+
+    bookViewHolder.position = i;
+    new BookImageAsyncTask(i, bookViewHolder).execute(books.get(i).getPhoto());
+    bookViewHolder.tvBookAuthor.setText(&quot;作者:&quot; + books.get(i).getAuthor());
+    bookViewHolder.tvBookName.setText(&quot;书名：&quot; + books.get(i).getBookName());
+    bookViewHolder.tvBookPublish.setText(&quot;出版社：&quot; + books.get(i).getPublisherName());
+    bookViewHolder.tvBookType.setText(&quot;分类：&quot; + books.get(i).getCategoryId());
+
+    return view;
+}
+
+static class BookViewHolder {
+    int position;
+    ImageView ivBookPhoto;
+    TextView tvBookName;
+    TextView tvBookAuthor;
+    TextView tvBookPublish;
+    TextView tvBookType;
+}
+
+
+/**
+ * 1.参数
+ * 2.进度
+ * 3.返回值
+ */
+class BookImageAsyncTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
+    private String imgUrl;
+    private ImageView ivBook;
+
+    private int mPosition;
+    private BookViewHolder mViewHolder;
+    //当前item的位置，和viewHolder
+    public BookImageAsyncTask(int position, BookViewHolder holder) {
+        this.mPosition = position;
+        this.mViewHolder = holder;
+    }
+    //后台运行
+    @Override
+    protected Bitmap doInBackground(String... strings) {
+        imgUrl = strings[0];
+        Log.d(&quot;tag&quot;, imgUrl);
+        String IP_HOST = &quot;http://192.168.1.8:8080/LibraryImage/&quot;;
+        return ImageUtils.loadImageForCache(IP_HOST + imgUrl);
+    }
+    //doinbackground返回值作为参数
+    @Override
+    protected void onPostExecute(Bitmap bitmap) {
+
+        if (mViewHolder.position == mPosition) {
+            mViewHolder.ivBookPhoto.setImageBitmap(bitmap);
+        }
+    }
+}
+
+
+}
+</code></pre><p>这样写起来代码就很好看了。且清晰易懂。</p>
+<p>####扯淡</p>
+<p>最近面试一哥们，问他用什么开发工具，他还是停留在Eclipse时代，想想简直可怕，特别是在windos的响应速度上，不谈了。我推荐他用IDEA。其中付费版的包括了Android、Java的大部分的框架，且有一个利器就是TestRESTWebService，在和服务器接口对接、调试的时候很方便。DataBase工具看起数据库也很方便，查看各种各样的数据库哦。Commander用起来也很方便，可以轻松的查看一个项目的结构，类结构，。相当不错。还集成了Git、Svn、Cvs等版本控制插件，用起来不要太爽。墙裂推荐！！</p>
+<p>####总结</p>
+<p>图片处理在Android开发中是家常便饭，为了不一直重复造轮子，Google的一个开源项目Volley是一个很不错的选择。你可以在Github上找到Volley的源代码。有了Volley在图片处理方面就很轻松了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/05/20/android_listview图片异步加载，和图片错乱/" data-id="cis7caswx000gp7jxxrmfsm4v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/06/12/andoridINSTALL_FAILED_OLDER_SDK/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android开发时遇到的INSTALL_FAILED_OLDER_SDK。
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/05/12/andoridPreference/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">andorid设置界面的框架，Preference Screens用法。</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Auxer原型在手机上访问，用Tomcat当做服务器。 | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Auxer制作的原型图在手机里浏览，超强的体验。。gogogo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Auxer原型在手机上访问，用Tomcat当做服务器。">
+<meta property="og:url" content="http://yoursite.com/2014/11/20/Auxer制作原型图，在手机里浏览/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="Auxer制作的原型图在手机里浏览，超强的体验。。gogogo">
+<meta property="og:updated_time" content="2016-08-23T10:26:10.784Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Auxer原型在手机上访问，用Tomcat当做服务器。">
+<meta name="twitter:description" content="Auxer制作的原型图在手机里浏览，超强的体验。。gogogo">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Auxer制作原型图，在手机里浏览" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Auxer原型在手机上访问，用Tomcat当做服务器。
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-11-19T16:00:00.000Z" itemprop="datePublished">11-20-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Auxer/">Auxer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Auxer制作的原型图在手机里面浏览<br>最近接触到Auxer原型制作工具，本着好奇的心理来做公司项目的原型。熟悉了Auxer的基本操作，和原型制作流程后，感觉很棒，特别是加上一些lib后，看起来跟真正的产品似得。当然这也是Auxer的强大之处，没什么好惊奇的。不明觉厉嘛~ 在我做完产品高保真原型图的时候，Google了一下怎么在手机端直接查看原型，这样的话会显示的更加逼真。可以看到产品成型后的样子，无疑是一个很好的体验。看网络上的大部分都是上传的Auxer自己带的服务器上去。这样无疑最好，但是由于国内网络的原因。访问Auxer提供的服务器不是很慢，就是被墙。体验非常糟糕。但是作为程序员的我，可不会因为这样的问题就算了。这时想到了我大JAVA的开源服务器Tomact，如果我在本地起一个Tomcat服务，然后吧App原型生产的Html保真原型放到Tomact里面，这样的话应该可以跟Auxer提供的服务器是一样的效果。于是就干了起来，结果如预期，哈哈，体验一下吧，亲们。</p>
+<ul>
+<li>下载Tomcat（这个不用说了吧 -、- ）</li>
+<li>配置Tomcat的环境变量。</li>
+<li>启动到Tomcat的bin目录里双击startup.bat文件，启动Tomcat。</li>
+<li>把原型图文件放到Tomcat的Root目录下面。</li>
+<li>在PC端浏览器里打开localhost:8080/你的项目/index.html（有时候是start.html）PS：生产原型时的注意事项在<a href="http://www.jianshu.com/p/3dc243cd2b6c" title="点击这里查看" target="_blank" rel="external">http://www.jianshu.com/p/3dc243cd2b6c</a></li>
+<li>在手机端浏览器里访问时，需要你的手机于PC在同一个网段，这样就可以访问到你的Tomcat的服务器了。例如我的PC的内网IP是<code>192.168.1.8:8080/demo/index.html</code>。这是你就可以在手机上查看你的原型了。体验一把吧。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/20/Auxer制作原型图，在手机里浏览/" data-id="cis7caswi0001p7jxn5gz41if" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/15/swift编程语言学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Swift学习。
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/10/10/Android屏幕适配/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android屏幕适配问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

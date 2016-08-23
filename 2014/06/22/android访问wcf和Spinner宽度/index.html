@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android访问wcf服务、Spinner设置宽度 | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="android 访问wcf服务，以及Spinner设置宽度。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android访问wcf服务、Spinner设置宽度">
+<meta property="og:url" content="http://yoursite.com/2014/06/22/android访问wcf和Spinner宽度/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="android 访问wcf服务，以及Spinner设置宽度。">
+<meta property="og:updated_time" content="2016-08-23T10:25:49.176Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android访问wcf服务、Spinner设置宽度">
+<meta name="twitter:description" content="android 访问wcf服务，以及Spinner设置宽度。">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-android访问wcf和Spinner宽度" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android访问wcf服务、Spinner设置宽度
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-06-21T16:00:00.000Z" itemprop="datePublished">06-22-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###Android访问wcf服务时候遇到的问题</p>
+<blockquote>
+<p>由于公司后台服务器，用的是wcf，在android中访问wcf是跟其他访问webservice是有出入的。访问webservice时，数据传输是用json，或者是xml。当然在wcf原理也是这样的。android反问wcf用的一个第三方的包ksoap2来访问的。当然你也可以自己去实现访问客户端，进行数据交互，但是实现起来无非就是自己实现了一遍ksoap2。我就不再重复制造轮子了..有兴趣的可以自己实现一下，我在这里就是记录一下ksoap2的用法：</p>
+</blockquote>
+<pre><code>public boolean login(User u) {
+        boolean is_login = false;
+        try {
+            SoapObject request = new SoapObject(NAME_SPACE, METHOD_NAME);
+            request.addProperty(&quot;userName&quot;, u.getName());
+            request.addProperty(&quot;passWord&quot;, u.getPassword());
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(request);
+
+            HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+
+            SoapPrimitive result = (SoapPrimitive) envelope.getResponse();
+            is_login = Boolean.valueOf(result.toString());
+            //---------------------------输出台观看输出------------------------
+            String resultData = result.toString();
+            // 0 is the first object of data
+            Log.d(&quot;resultData内容-----&gt;&quot; ,resultData);
+            Log.d(&quot;value-----&gt;&quot; ,result.getValue());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return is_login;
+    }
+</code></pre><p>在这段代码中有主要的几个对象<code>SoapObject</code>、<code>SoapSerializationEnvelope</code>、<code>HttpTransportSE</code>、<code>SoapPrimitive</code>。</p>
+<ul>
+<li><p>SoapObject这是一个很有用的对象，不管你是从服务器端得到的数据对象是什么类型，都可以用这个对象来接收。然后你得到的数据的结构，来解析出你有用数据。SoapObject提供了一些解析数据的方法。例如：<code>getProperty(index)</code>,<code>getPropertyAsString(index)</code>,其中的<code>index</code>是你得到数据结构的<code>key</code>，你可以借助网上的一些访问wcf的可视化工具来看数据的key。在这我用的是一个叫：<code>Storm</code>的小工具</p>
+</li>
+<li><p>SoapSerializationEnvelope对象主要是负责网络中数据传输时候的序列化问题和访问响应的对象，可以从中得到响应的结果。</p>
+</li>
+<li><p>HttpTransportSE这个就是一个类HttpClient的对象，调用他的<code>call（）</code>方法，向一个地址发送请求。</p>
+</li>
+<li><p>SoapPrimitive 跟SoapObject对象很相似，简单理解为：在返回多个对象是一个集合的时候用SoapObject,在返回对象是单一个对象的时候，用SaopPrimitive </p>
+</li>
+</ul>
+<p>###AndroidSpinner控件设置Width</p>
+<blockquote>
+<p>android Spinner自适应宽度，Spinner默认的弹出来一个窗口，fill_width宽度的窗口，当你数据很少的时候用户体验会很差，在网上看了一些朋友的说法就是设置spinner所用的adapter中填充的布局的宽度，但是这样的方法是实现不了spinner下拉菜单变窄的，于是我就看了下Spinner源码。在Spinner类中有这样的片段。</p>
+</blockquote>
+<pre><code>// Only measure this many items to get a decent max width.
+private static final int MAX_ITEMS_MEASURED = 15;
+
+/**
+ * Use a dialog window for selecting spinner options.
+ */
+public static final int MODE_DIALOG = 0;
+
+/**
+ * Use a dropdown anchored to the Spinner for selecting spinner options.
+ */
+public static final int MODE_DROPDOWN = 1;
+
+/**
+ * Use the theme-supplied value to select the dropdown mode.
+ */
+private static final int MODE_THEME = -1;
+
+/** Forwarding listener used to implement drag-to-open. */s
+int mDropDownWidth;
+</code></pre><p>当我看到mDropDownWidth的时候，就可以判断这个View是可以实现变窄的。其中看到一个方法：</p>
+<pre><code>/**
+ * Set the width of the spinner&apos;s popup window of choices in pixels. This value
+ * may also be set to {@link android.view.ViewGroup.LayoutParams#MATCH_PARENT}
+ * to match the width of the Spinner itself, or
+ * {@link android.view.ViewGroup.LayoutParams#WRAP_CONTENT} to wrap to the measured size
+ * of contained dropdown list items.
+ *
+ * **Only valid in {@link #MODE_DROPDOWN}; this method is a no-op in other modes.**
+ *
+ * @param pixels Width in pixels, WRAP_CONTENT, or MATCH_PARENT
+ *
+ * @attr ref android.R.styleable#Spinner_dropDownWidth
+ */
+public void setDropDownWidth(int pixels) {
+    if (!(mPopup instanceof DropdownPopup)) {
+        Log.e(TAG, &quot;Cannot set dropdown width for MODE_DIALOG, ignoring&quot;);
+        return;
+    }
+    mDropDownWidth = pixels;
+}
+</code></pre><p>这个方法的说明中有这么一段：<code>Only valid in {@link #MODE_DROPDOWN}; this method is a no-op in other modes.</code>大概内容就是，这个方法只适用于Spinner的mode为<code>MODE_DROPDOWN</code>，这时侯才会有效。所以接下来就是去设置Spiner的mode，但是我在代码中没有找到这个设置方法，且Spinner默认的模式为<code>MODE_DIALOG</code>，后来我再xml布局文件找到了设置Spinner模式的属性。Spinner空间又这样的一个属性：<code>android:spinnerMode=&quot;dropdown&quot;</code>这就可以在代码中调用<code>setDropDownWidth（int pixels）</code>方法来完成Spinner弹出框宽度的设置。</p>
+<blockquote>
+<p>下次给大家带来android中怎么向wcf服务器传递复杂的数据对象，譬如：list、set、map 以及自己定义的model</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/22/android访问wcf和Spinner宽度/" data-id="cis7caswy000hp7jxbnqdjzdj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android、wcf、webService/">android、wcf、webService</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/07/12/platform开发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android端插件平台开发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/06/12/andoridINSTALL_FAILED_OLDER_SDK/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android开发时遇到的INSTALL_FAILED_OLDER_SDK。</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

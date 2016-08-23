@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>windows下安装python mysqldb | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装mysqldb时候遇到的一些问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows下安装python mysqldb">
+<meta property="og:url" content="http://yoursite.com/2013/11/22/安装pythonmysqldb遇到的问题/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="安装mysqldb时候遇到的一些问题">
+<meta property="og:image" content="http://ccpy.qiniudn.com/test.jpg">
+<meta property="og:updated_time" content="2016-08-23T10:26:36.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows下安装python mysqldb">
+<meta name="twitter:description" content="安装mysqldb时候遇到的一些问题">
+<meta name="twitter:image" content="http://ccpy.qiniudn.com/test.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-安装pythonmysqldb遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      windows下安装python mysqldb
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2013-11-22T09:11:54.000Z" itemprop="datePublished">11-22-2013</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##在windows下安装python mysqldb</p>
+<p>在windows下安装mysqldb，直接选择相应的版本，双击进行安装即可。<a href="http://www.codegood.com/downloads" target="_blank" rel="external">点击下载</a></p>
+<p>####python包管理整理</p>
+<p>在python开发中经常用到的一个工具，pip，在网上搜这方面的知识，会有一大堆。在此不在累赘。在*unix下安装python的pip会很容易安装，在windows下，就要用到一个脚本去安装。<a href="https://bootstrap.pypa.io/ez_setup.py" target="_blank" rel="external">点击下载</a>,这个是安装easy_install 的。然后可以用easy_install去安装pip工具</p>
+<p>####python的虚拟环境</p>
+<p>python开发的时候，经常会有N多的三方库，这就造成了python环境的混乱，和臃肿。所以，在这里我们用virtualenv去创建项目的工作的python环境。用Virtualenvwrapper去管理python的虚拟环境</p>
+<p>1.创建一个虚拟环境</p>
+<pre><code>virtualenv env1 
+</code></pre><p>2.然后进到虚拟环境中去用pip安装所需的三方库，</p>
+<pre><code>pip install [第三方库]
+</code></pre><p>3.所有的虚拟环境，互不干扰</p>
+<p>####python的requirements</p>
+<p>1.生成requirements.txt文件</p>
+<pre><code>pip freeze &gt; requirements.txt
+</code></pre><p>2.用requirements.txt文件下载项目所依赖的三方库</p>
+<pre><code>pip install -r requirements.txt
+</code></pre><p>####python + pychram + django快速开发方案</p>
+<p>配置django设置。</p>
+<p>1.files-&gt; setting -&gt; django support </p>
+<p>2.然后选择项目目录。再选择setting文件，最后选择manage.py文件。</p>
+<p>3.Ctrl + Alt + R 选择要执行的manage.py的命令</p>
+<p>####python+django练习</p>
+<p>这是我在学习python的时候，做的一个博客。已经支持代码高亮，前端界面用的是一些css库。整个的blog的内容很简洁，支持markdown编辑文件，后台管理直接用的三方库，来支持markdon输入，评论系统用的国内的多说网，在这里感谢多少网的支持，由于本人前段技术有限，所以，以后会逐渐的加入新功能，譬如：文章分类，文章标签等功能。</p>
+<p><img src="http://ccpy.qiniudn.com/test.jpg" alt="图片"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/11/22/安装pythonmysqldb遇到的问题/" data-id="cis7casx70013p7jx4hkhxtq7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/12/12/adb命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ADB(Android Debug Bridge)的命令记录。
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

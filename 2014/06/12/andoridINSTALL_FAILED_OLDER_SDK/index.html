@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android开发时遇到的INSTALL_FAILED_OLDER_SDK。 | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android开发时遇到的INSTALL_FAILED_OLDER_SDK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发时遇到的INSTALL_FAILED_OLDER_SDK。">
+<meta property="og:url" content="http://yoursite.com/2014/06/12/andoridINSTALL_FAILED_OLDER_SDK/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="Android开发时遇到的INSTALL_FAILED_OLDER_SDK">
+<meta property="og:updated_time" content="2016-08-23T10:25:40.492Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发时遇到的INSTALL_FAILED_OLDER_SDK。">
+<meta name="twitter:description" content="Android开发时遇到的INSTALL_FAILED_OLDER_SDK">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-andoridINSTALL_FAILED_OLDER_SDK" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android开发时遇到的INSTALL_FAILED_OLDER_SDK。
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-06-11T16:00:00.000Z" itemprop="datePublished">06-12-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###当你发生这样的错误：INSTALL<em> FAILED</em> OLDER_SDK<br>如果你用的是andorid studio编辑器的话，有可能遇到这样的错误Failure [INSTALL_FAILED_OLDER_SDK]，这是由于编译时，针对的平台是你所设置的平台，而在你运行项目的时候，所用的平台是其他的，例如，你编译的是4.0 而运行用的设备的版本是4.4或者其他的，这是就会造成这样的错误。</p>
+<p>办法，你可以修改build.gradle文件中的</p>
+<pre><code>android {
+    compileSdkVersion 18
+    buildToolsVersion &quot;18.1.1&quot;
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 16
+    }
+}
+</code></pre><p>更改targetSdkVersion成你所用设备的版本</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/06/12/andoridINSTALL_FAILED_OLDER_SDK/" data-id="cis7caswn0005p7jxpiqskirf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/06/22/android访问wcf和Spinner宽度/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android访问wcf服务、Spinner设置宽度
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/05/20/android_listview图片异步加载，和图片错乱/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">解决Android ListView图片异步加载，和图片错乱</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>android开发之actionbar无法显示overflow menu的解决办法 | bogou</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ActionBar的overflow menu无法溢出的问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android开发之actionbar无法显示overflow menu的解决办法">
+<meta property="og:url" content="http://yoursite.com/2014/03/11/androidActionBarmenu菜单无法显示的问题/index.html">
+<meta property="og:site_name" content="bogou">
+<meta property="og:description" content="ActionBar的overflow menu无法溢出的问题">
+<meta property="og:updated_time" content="2016-08-23T10:25:57.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android开发之actionbar无法显示overflow menu的解决办法">
+<meta name="twitter:description" content="ActionBar的overflow menu无法溢出的问题">
+  
+    <link rel="alternative" href="/atom.xml" title="bogou" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">bogou</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-home-icon" class="nav-icon" href="/"></a>
+        
+          <a id="nav-archives-icon" class="nav-icon" href="/archives"></a>
+        
+          <a id="nav-about-icon" class="nav-icon" href="/about"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-androidActionBarmenu菜单无法显示的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      android开发之actionbar无法显示overflow menu的解决办法
+    </h1>
+  
+
+      </header>
+    
+    <time class="article-date" datetime="2014-03-10T16:00:00.000Z" itemprop="datePublished">03-11-2014</time>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###android开发之actionbar无法显示overflow menu的解决办法</p>
+<p>今天在开发actionbar的时候，遇到一个奇葩的问题~，就是按照官方的文档创建actionbar的时候。在设置溢出菜单选项的时候，不管我上面有多少菜单项，都无法溢出，最多就是显示出来几个，在网上找了好久，也没有找到好的办法，后来在群里询问，有的人说是因为我设置的showAsAction属性有错误，我设置的是ifRoom|withText，然而我按照他说的改成了never，也是不行。最后不得不去认真的看官方文档，官方文档解释是这样的：</p>
+<blockquote>
+<p>The action overflow in the action bar provides access to your app’s less frequently used actions. The overflow icon only appears on phones that have no menu hardware keys. Phones with menu keys display the action overflow when the user presses the key.<a href="http://developer.android.com/design/patterns/actionbar.html#considerations-split-action-bars" target="_blank" rel="external">点击链接</a></p>
+<p>大概意思就是：溢出菜单里面存放些不常用的功能选项，溢出菜单图标只出现在手机硬件没有菜单键的设备上，当用户按下溢出菜单后，溢出菜单会显示出存放的功能选项。</p>
+</blockquote>
+<p>最后找到原因：如果手机上有menu的物理按键，或者虚拟按键的时候，actionbar的overflow menu 默认是不会显示的解决办法是：</p>
+<pre><code>private void forceShowActionBarOverflowMenu() {
+    try {
+        ViewConfiguration config = ViewConfiguration.get(this);
+        Field menuKeyField = ViewConfiguration.class.getDeclaredField(&quot;sHasPermanentMenuKey&quot;);
+        if (menuKeyField != null) {
+            menuKeyField.setAccessible(true);
+            menuKeyField.setBoolean(config, false);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+</code></pre><p>截取上面代码就在onCreate方法中调用，就可以解决overflow menu不显示的问题。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/03/11/androidActionBarmenu菜单无法显示的问题/" data-id="cis7caswr000ap7jxyr5o1v4t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ActionBar/">ActionBar</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/03/13/javaIO/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JAVAIO操作梳理。
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/12/12/adb命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ADB(Android Debug Bridge)的命令记录。</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 bugou<br>
+      <a href="https://github.com/steven5538/hexo-theme-athena" target="_blank">Athena</a> by <a href="http://steven5538.tw" target="_blank">Steven5538</a> | Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
